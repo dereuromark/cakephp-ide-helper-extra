@@ -1,0 +1,5 @@
+parameters:
+	autoload_files:
+		- bootstrap.php
+	checkMissingIterableValueType: false
+	ignoreErrors:

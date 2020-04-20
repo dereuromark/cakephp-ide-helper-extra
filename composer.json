@@ -1,0 +1,60 @@
+{
+	"name": "dereuromark/cakephp-ide-helper-extra",
+	"description": "Tasks/Addons for CakePHP IdeHelper plugin",
+	"type": "cakephp-plugin",
+	"keywords": ["cakephp", "IDE", "autocomplete", "annotations", "plugin", "phpstorm", "phpdoc"],
+	"homepage": "https://github.com/dereuromark/cakephp-ide-helper-extra/",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Mark Scherer",
+			"homepage": "https://www.dereuromark.de",
+			"role": "Maintainer"
+		},
+		{
+			"name": "Other contributors",
+			"homepage": "https://github.com/dereuromark/cakephp-ide-helper-extra/graphs/contributors",
+			"role": "Developer"
+		}
+	],
+	"support": {
+		"issues": "https://github.com/dereuromark/cakephp-ide-helper-extra/issues",
+		"source": "https://github.com/dereuromark/cakephp-ide-helper-extra/"
+	},
+	"require": {
+		"php": ">=7.2",
+		"dereuromark/cakephp-ide-helper": "^1.2.0"
+	},
+	"require-dev": {
+		"dereuromark/cakephp-tools": "^2.0.1",
+		"fig-r/psr2r-sniffer": "dev-master"
+	},
+	"autoload": {
+		"psr-4": {
+			"IdeHelperExtra\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"IdeHelperExtra\\Test\\": "tests/",
+			"TestApp\\": "tests/test_app/src/"
+		}
+	},
+	"prefer-stable": true,
+	"scripts": {
+		"test": "php phpunit.phar",
+		"test-setup": "[ ! -f phpunit.phar ] && curl -OL https://phar.phpunit.de/phpunit-8.5.2.phar && mv phpunit-8.5.2.phar phpunit.phar || true",
+		"test-coverage" : "php phpunit.phar --log-junit tmp/coverage/unitreport.xml --coverage-html tmp/coverage --coverage-clover tmp/coverage/coverage.xml",
+		"stan": "phpstan analyse -c tests/phpstan.neon -l 6 src/",
+		"stan-setup": "cp composer.json composer.backup && composer require --dev phpstan/phpstan:^0.12 && mv composer.backup composer.json",
+		"lowest": "validate-prefer-lowest",
+		"lowest-setup": "composer update --prefer-lowest --prefer-stable --prefer-dist --no-interaction && cp composer.json composer.backup && composer require --dev dereuromark/composer-prefer-lowest && mv composer.backup composer.json",
+		"cs-check": "phpcs -p --standard=vendor/fig-r/psr2r-sniffer/PSR2R/ruleset.xml --extensions=php --ignore=/tests/test_files/,/tests/test_app/ src/ tests/",
+		"cs-fix": "phpcbf -p --standard=vendor/fig-r/psr2r-sniffer/PSR2R/ruleset.xml --extensions=php --ignore=/tests/test_files/,/tests/test_app/ src/ tests/"
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.0.x-dev"
+		}
+	}
+}

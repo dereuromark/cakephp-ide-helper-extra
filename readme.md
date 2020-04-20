@@ -1,0 +1,31 @@
+#  CakePHP IdeHelperExtra Plugin
+
+[![Build Status](https://api.travis-ci.com/dereuromark/cakephp-ide-helper-extra.svg?branch=master)](https://travis-ci.com/dereuromark/cakephp-ide-helper-extra)
+[![Coverage Status](https://img.shields.io/codecov/c/github/dereuromark/cakephp-ide-helper-extra/master.svg)](https://codecov.io/github/dereuromark/cakephp-ide-helper-extra?branch=master)
+[![Latest Stable Version](https://poser.pugx.org/dereuromark/cakephp-ide-helper-extra/v/stable.svg)](https://packagist.org/packages/dereuromark/cakephp-ide-helper-extra)
+[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.2-8892BF.svg)](https://php.net/)
+[![License](https://poser.pugx.org/dereuromark/cakephp-ide-helper-extra/license.png)](https://packagist.org/packages/dereuromark/cakephp-ide-helper-extra)
+[![Total Downloads](https://poser.pugx.org/dereuromark/cakephp-ide-helper-extra/d/total.svg)](https://packagist.org/packages/dereuromark/cakephp-ide-helper-extra)
+
+IdeHelperExtra plugin for CakePHP applications.
+
+- Provides useful Tasks/Addons for [IdeHelper](https://github.com/dereuromark/cakephp-ide-helper)
+
+This branch is for use with **CakePHP 4.0+**. For details see [version map](https://github.com/dereuromark/cakephp-ide-helper-extra/wiki#cakephp-version-map).
+
+## Features
+
+Supports IDE autocomplete/typehinting of (magic)strings as well as return types/values for:
+- [Tools](https://github.com/dereuromark/cakephp-tools) plugin
+    * FormatHelper::icon() and FontAwesome v4 or v5 icons
+- ... and more (using PHPStorm meta file)
+
+See [IdeHelper Wiki](https://github.com/dereuromark/cakephp-ide-helper-extra/wiki) for details and tips/settings.
+
+You can submit your own tasks either inside your plugin or here as extra.
+
+### Plugins with already included tasks and more
+See https://github.com/dereuromark/cakephp-ide-helper/#plugins-with-meta-file-generator-tasks
+
+### Install, Setup, Usage, Contribution
+See the **[Docs](https://github.com/dereuromark/cakephp-ide-helper-extra/tree/master/docs)** for details.
