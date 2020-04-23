@@ -7,6 +7,7 @@ use Cake\Core\Configure;
 use Cake\View\View;
 use IdeHelper\Generator\Directive\ExpectedArguments;
 use IdeHelper\Generator\Task\TaskInterface;
+use RuntimeException;
 use Tools\View\Helper\FormatHelper;
 
 /**
@@ -27,6 +28,9 @@ class FormatIconFontAwesome4Task implements TaskInterface {
 	public function __construct(?string $fontPath = null) {
 		if ($fontPath === null) {
 			$fontPath = (string)Configure::readOrFail('Format.fontPath');
+		}
+		if ($fontPath && !file_exists($fontPath)) {
+			throw new RuntimeException('File not found: ' . $fontPath);
 		}
 
 		$this->fontPath = $fontPath;
@@ -54,28 +58,35 @@ class FormatIconFontAwesome4Task implements TaskInterface {
 	}
 
 	/**
-	 * Fontawesome v4 using fontawesome-webfont.svg file.
+	 * Fontawesome v4 using variables.scss or variables.less file.
 	 *
 	 * Set your custom file path in your app.php:
-	 *     'fontPath' => ROOT . '/webroot/css/fonts/fontawesome-webfont.svg'
+	 *     'fontPath' => ROOT . '/node_modules/.../scss/variables.scss'
 	 *
 	 * @return string[]
 	 */
 	protected function collectIcons(): array {
 		$helper = new FormatHelper(new View());
 		$configured = $helper->getConfig('fontIcons');
+		$configured = array_keys($configured);
 
 		$fontFile = $this->fontPath;
 		$icons = [];
 		if ($fontFile && file_exists($fontFile)) {
 			$content = file_get_contents($fontFile);
-			preg_match_all('/glyph-name="([a-z][^"]+)"/', $content, $matches);
-			$icons = $matches[1];
-			foreach ($icons as $key => $icon) {
-				if (strpos($icon, 'uni') === 0 || preg_match('#[a-z]\d[a-z]\d#i', $icon)) {
-					unset($icons[$key]);
-				}
+			$ext = pathinfo($fontFile, PATHINFO_EXTENSION);
+			switch ($ext) {
+				case 'less':
+					preg_match_all('/@fa-var-([0-9a-z-]+):/', $content, $matches);
+					break;
+				case 'scss':
+					preg_match_all('/\$fa-var-([0-9a-z-]+):/', $content, $matches);
+					break;
+				default:
+					throw new RuntimeException('Format not supported: ' . $ext);
 			}
+
+			$icons = !empty($matches[1]) ? $matches[1] : [];
 		}
 
 		$icons = array_merge($configured, $icons);

@@ -35,10 +35,14 @@ class FormatIconFontAwesome4TaskTest extends TestCase {
 	}
 
 	/**
+	 * @dataProvider extensions
+	 *
+	 * @param string $extension
+	 *
 	 * @return void
 	 */
-	public function testCollect(): void {
-		$path = TEST_FILES . 'Tools' . DS . 'fa4' . DS . 'fontawesome-webfont.svg';
+	public function testCollect(string $extension): void {
+		$path = TEST_FILES . 'Tools' . DS . 'fa4' . DS . 'variables.' . $extension;
 		$task = new FormatIconFontAwesome4Task($path);
 
 		$result = $task->collect();
@@ -55,8 +59,18 @@ class FormatIconFontAwesome4TaskTest extends TestCase {
 			return (string)$className;
 		}, $list);
 
-		$this->assertTrue(count($list) > 380);
-		$this->assertSame('\'smile\'', $list['smile']);
+		$this->assertTrue(count($list) > 780, 'count of ' . count($list));
+		$this->assertSame('\'smile-o\'', $list['smile-o']);
+	}
+
+	/**
+	 * @return array
+	 */
+	public function extensions(): array {
+		return [
+			'scss' => ['scss'],
+			'less' => ['less'],
+		];
 	}
 
 }

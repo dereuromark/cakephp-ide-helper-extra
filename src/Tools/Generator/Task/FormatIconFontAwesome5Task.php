@@ -7,6 +7,7 @@ use Cake\Core\Configure;
 use Cake\View\View;
 use IdeHelper\Generator\Directive\ExpectedArguments;
 use IdeHelper\Generator\Task\TaskInterface;
+use RuntimeException;
 use Tools\View\Helper\FormatHelper;
 
 class FormatIconFontAwesome5Task implements TaskInterface {
@@ -24,6 +25,9 @@ class FormatIconFontAwesome5Task implements TaskInterface {
 	public function __construct(?string $fontPath = null) {
 		if ($fontPath === null) {
 			$fontPath = (string)Configure::readOrFail('Format.fontPath');
+		}
+		if ($fontPath && !file_exists($fontPath)) {
+			throw new RuntimeException('File not found: ' . $fontPath);
 		}
 
 		$this->fontPath = $fontPath;
@@ -62,6 +66,7 @@ class FormatIconFontAwesome5Task implements TaskInterface {
 	protected function collectIcons(): array {
 		$helper = new FormatHelper(new View());
 		$configured = $helper->getConfig('fontIcons');
+		$configured = array_keys($configured);
 
 		$fontFile = $this->fontPath;
 		$icons = [];
