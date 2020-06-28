@@ -4,8 +4,8 @@ namespace IdeHelperExtra\Test\TestCase\Tools\Generator\Task;
 
 use Cake\TestSuite\TestCase;
 use Cake\View\View;
-use IdeHelperExtra\Tools\Generator\Task\FormatIconFontAwesome4Task;
 use IdeHelper\Generator\Directive\ExpectedArguments;
+use IdeHelperExtra\Tools\Generator\Task\FormatIconFontAwesome4Task;
 use Tools\View\Helper\FormatHelper;
 
 class FormatIconFontAwesome4TaskTest extends TestCase {

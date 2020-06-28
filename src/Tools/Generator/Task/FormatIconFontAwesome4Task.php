@@ -15,7 +15,7 @@ use Tools\View\Helper\FormatHelper;
  */
 class FormatIconFontAwesome4Task implements TaskInterface {
 
-	const CLASS_FORMAT_HELPER = FormatHelper::class;
+	public const CLASS_FORMAT_HELPER = FormatHelper::class;
 
 	/**
 	 * @var string
@@ -78,9 +78,11 @@ class FormatIconFontAwesome4Task implements TaskInterface {
 			switch ($ext) {
 				case 'less':
 					preg_match_all('/@fa-var-([0-9a-z-]+):/', $content, $matches);
+
 					break;
 				case 'scss':
 					preg_match_all('/\$fa-var-([0-9a-z-]+):/', $content, $matches);
+
 					break;
 				default:
 					throw new RuntimeException('Format not supported: ' . $ext);
