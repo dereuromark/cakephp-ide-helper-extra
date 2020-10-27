@@ -27,6 +27,7 @@
 	},
 	"require-dev": {
 		"dereuromark/cakephp-tools": "^2.0.1",
+		"cakephp/plugin-installer": "^1.3",
 		"fig-r/psr2r-sniffer": "dev-master"
 	},
 	"autoload": {
