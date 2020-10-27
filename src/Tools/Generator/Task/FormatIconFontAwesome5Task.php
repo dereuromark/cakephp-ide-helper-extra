@@ -72,6 +72,9 @@ class FormatIconFontAwesome5Task implements TaskInterface {
 		$icons = [];
 		if (file_exists($fontFile)) {
 			$content = file_get_contents($fontFile);
+			if ($content === false) {
+				throw new RuntimeException('Cannot read file: ' . $fontFile);
+			}
 			preg_match_all('/symbol id="([a-z][^"]+)"/', $content, $matches);
 			$icons = $matches[1];
 		}

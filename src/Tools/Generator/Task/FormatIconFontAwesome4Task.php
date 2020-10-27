@@ -74,6 +74,10 @@ class FormatIconFontAwesome4Task implements TaskInterface {
 		$icons = [];
 		if ($fontFile && file_exists($fontFile)) {
 			$content = file_get_contents($fontFile);
+			if ($content === false) {
+				throw new RuntimeException('Cannot read file: ' . $fontFile);
+			}
+
 			$ext = pathinfo($fontFile, PATHINFO_EXTENSION);
 			switch ($ext) {
 				case 'less':
