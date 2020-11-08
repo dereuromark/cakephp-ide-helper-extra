@@ -70,14 +70,16 @@ class FormatIconFontAwesome5Task implements TaskInterface {
 
 		$fontFile = $this->fontPath;
 		$icons = [];
-		if (file_exists($fontFile)) {
-			$content = file_get_contents($fontFile);
-			if ($content === false) {
-				throw new RuntimeException('Cannot read file: ' . $fontFile);
-			}
-			preg_match_all('/symbol id="([a-z][^"]+)"/', $content, $matches);
-			$icons = $matches[1];
+		if (!file_exists($fontFile)) {
+			throw new RuntimeException('File not found: ' . $fontFile);
 		}
+
+		$content = file_get_contents($fontFile);
+		if ($content === false) {
+			throw new RuntimeException('Cannot read file: ' . $fontFile);
+		}
+		preg_match_all('/symbol id="([a-z][^"]+)"/', $content, $matches);
+		$icons = $matches[1];
 
 		$icons = array_merge($configured, $icons);
 		sort($icons);
