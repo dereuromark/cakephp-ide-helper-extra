@@ -6,6 +6,7 @@ namespace IdeHelperExtra\Tools\Generator\Task;
 use Cake\Core\Configure;
 use Cake\View\View;
 use IdeHelper\Generator\Directive\ExpectedArguments;
+use IdeHelper\Generator\Directive\RegisterArgumentsSet;
 use IdeHelper\Generator\Task\TaskInterface;
 use RuntimeException;
 use Tools\View\Helper\FormatHelper;
@@ -13,6 +14,7 @@ use Tools\View\Helper\FormatHelper;
 class FormatIconFontAwesome5Task implements TaskInterface {
 
 	public const CLASS_FORMAT_HELPER = FormatHelper::class;
+	public const SET_ICONS_FONTAWESOME = 'fontawesomeIcons';
 
 	/**
 	 * @var string
@@ -47,8 +49,11 @@ class FormatIconFontAwesome5Task implements TaskInterface {
 
 		ksort($list);
 
+		$registerArgumentsSet = new RegisterArgumentsSet(static::SET_ICONS_FONTAWESOME, $list);
+		$result[$registerArgumentsSet->key()] = $registerArgumentsSet;
+
 		$method = '\\' . static::CLASS_FORMAT_HELPER . '::icon()';
-		$directive = new ExpectedArguments($method, 0, $list);
+		$directive = new ExpectedArguments($method, 0, [$registerArgumentsSet]);
 		$result[$directive->key()] = $directive;
 
 		return $result;

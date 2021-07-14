@@ -5,6 +5,7 @@ namespace IdeHelperExtra\Test\TestCase\Tools\Generator\Task;
 use Cake\TestSuite\TestCase;
 use Cake\View\View;
 use IdeHelper\Generator\Directive\ExpectedArguments;
+use IdeHelper\Generator\Directive\RegisterArgumentsSet;
 use IdeHelperExtra\Tools\Generator\Task\FormatIconFontAwesome5Task;
 use Tools\View\Helper\FormatHelper;
 
@@ -46,12 +47,12 @@ class FormatIconFontAwesome5TaskTest extends TestCase {
 
 		$result = $task->collect();
 
-		$this->assertCount(1, $result);
+		$this->assertCount(2, $result);
 
-		/** @var \IdeHelper\Generator\Directive\ExpectedArguments $directive */
+		/** @var \IdeHelper\Generator\Directive\RegisterArgumentsSet $directive */
 		$directive = array_shift($result);
 
-		$this->assertInstanceOf(ExpectedArguments::class, $directive);
+		$this->assertInstanceOf(RegisterArgumentsSet::class, $directive);
 
 		$list = $directive->toArray()['list'];
 		$list = array_map(function ($className) {
@@ -60,6 +61,10 @@ class FormatIconFontAwesome5TaskTest extends TestCase {
 
 		$this->assertTrue(count($list) > 900);
 		$this->assertSame('\'smile\'', $list['smile']);
+
+		/** @var \IdeHelper\Generator\Directive\ExpectedArguments $directive */
+		$directive = array_shift($result);
+		$this->assertInstanceOf(ExpectedArguments::class, $directive);
 	}
 
 }
