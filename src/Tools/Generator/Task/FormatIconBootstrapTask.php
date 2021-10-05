@@ -64,7 +64,7 @@ class FormatIconBootstrapTask implements TaskInterface {
 	 *
 	 * Set your custom file path in your app.php:
 	 * 'Format' => [
-	 *     'fontPath' => ROOT . '/webroot/css/bootstrap/font/bootstrap-icons.json',
+	 *     'fontPath' => ROOT . '/webroot/css/bootstrap-icons/font/bootstrap-icons.json',
 	 *
 	 * @return string[]
 	 */
