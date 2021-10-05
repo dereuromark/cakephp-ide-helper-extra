@@ -60,11 +60,11 @@ class FormatIconBootstrapTask implements TaskInterface {
 	}
 
 	/**
-	 * Fontawesome v5 using sprites .svg files.
+	 * Bootstrap Icons using .json file.
 	 *
 	 * Set your custom file path in your app.php:
 	 * 'Format' => [
-	 *     'fontPath' => ROOT . '/webroot/css/fontawesome-free/sprites/solid.svg',
+	 *     'fontPath' => ROOT . '/webroot/css/bootstrap/font/bootstrap-icons.json',
 	 *
 	 * @return string[]
 	 */
