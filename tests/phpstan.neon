@@ -1,5 +1,0 @@
-parameters:
-	bootstrapFiles:
-		- bootstrap.php
-	checkMissingIterableValueType: false
-	ignoreErrors:

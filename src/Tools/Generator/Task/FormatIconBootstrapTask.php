@@ -14,6 +14,10 @@ use Tools\View\Helper\FormatHelper;
 class FormatIconBootstrapTask implements TaskInterface {
 
 	public const CLASS_FORMAT_HELPER = FormatHelper::class;
+
+	/**
+	 * @var string
+	 */
 	public const SET_ICONS_BOOTSTRAP = 'bootstrapIcons';
 
 	/**
@@ -36,7 +40,7 @@ class FormatIconBootstrapTask implements TaskInterface {
 	}
 
 	/**
-	 * @return \IdeHelper\Generator\Directive\BaseDirective[]
+	 * @return array<\IdeHelper\Generator\Directive\BaseDirective>
 	 */
 	public function collect(): array {
 		$result = [];
@@ -53,7 +57,7 @@ class FormatIconBootstrapTask implements TaskInterface {
 		$result[$registerArgumentsSet->key()] = $registerArgumentsSet;
 
 		$method = '\\' . static::CLASS_FORMAT_HELPER . '::icon()';
-		$directive = new ExpectedArguments($method, 0, [$registerArgumentsSet]);
+		$directive = new ExpectedArguments($method, 0, [(string)$registerArgumentsSet]);
 		$result[$directive->key()] = $directive;
 
 		return $result;
@@ -66,12 +70,12 @@ class FormatIconBootstrapTask implements TaskInterface {
 	 * 'Format' => [
 	 *     'fontPath' => ROOT . '/webroot/css/bootstrap-icons/font/bootstrap-icons.json',
 	 *
-	 * @return string[]
+	 * @return array<string>
 	 */
 	protected function collectIcons(): array {
 		$helper = new FormatHelper(new View());
 		$configured = $helper->getConfig('fontIcons');
-		/** @var string[] $configured */
+		/** @var array<string> $configured */
 		$configured = array_keys($configured);
 
 		$fontFile = $this->fontPath;
@@ -89,7 +93,7 @@ class FormatIconBootstrapTask implements TaskInterface {
 			throw new RuntimeException('Cannot parse JSON: ' . $fontFile);
 		}
 
-		/** @var string[] $icons */
+		/** @var array<string> $icons */
 		$icons = array_keys($array);
 
 		$icons = array_merge($configured, $icons);

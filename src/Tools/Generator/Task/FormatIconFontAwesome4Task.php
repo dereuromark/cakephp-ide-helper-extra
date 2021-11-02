@@ -17,6 +17,10 @@ use Tools\View\Helper\FormatHelper;
 class FormatIconFontAwesome4Task implements TaskInterface {
 
 	public const CLASS_FORMAT_HELPER = FormatHelper::class;
+
+	/**
+	 * @var string
+	 */
 	public const SET_ICONS_FONTAWESOME = 'fontawesomeIcons';
 
 	/**
@@ -39,7 +43,7 @@ class FormatIconFontAwesome4Task implements TaskInterface {
 	}
 
 	/**
-	 * @return \IdeHelper\Generator\Directive\BaseDirective[]
+	 * @return array<\IdeHelper\Generator\Directive\BaseDirective>
 	 */
 	public function collect(): array {
 		$result = [];
@@ -56,7 +60,7 @@ class FormatIconFontAwesome4Task implements TaskInterface {
 		$result[$registerArgumentsSet->key()] = $registerArgumentsSet;
 
 		$method = '\\' . static::CLASS_FORMAT_HELPER . '::icon()';
-		$directive = new ExpectedArguments($method, 0, [$registerArgumentsSet]);
+		$directive = new ExpectedArguments($method, 0, [(string)$registerArgumentsSet]);
 		$result[$directive->key()] = $directive;
 
 		return $result;
@@ -68,7 +72,7 @@ class FormatIconFontAwesome4Task implements TaskInterface {
 	 * Set your custom file path in your app.php:
 	 *     'fontPath' => ROOT . '/node_modules/.../scss/variables.scss'
 	 *
-	 * @return string[]
+	 * @return array<string>
 	 */
 	protected function collectIcons(): array {
 		$helper = new FormatHelper(new View());
