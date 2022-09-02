@@ -15,9 +15,12 @@ Pick one depending on the FA version you are using.
 
 - AuthServiceLoadIdentifierTask
 
-To enable, add it to the task stack:
-```php
-// config/app_local.php 
+To enable, add it to the task stack in your app config:
+```php 
+use IdeHelperExtra\Authentication\Generator\Task\AuthServiceLoadIdentifierTask;
+
+...
+
 'IdeHelper' => [
     'generatorTasks' => [
         AuthServiceLoadIdentifierTask::class => AuthServiceLoadIdentifierTask::class,
