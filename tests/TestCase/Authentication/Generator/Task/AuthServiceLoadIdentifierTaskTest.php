@@ -36,7 +36,6 @@ class AuthServiceLoadIdentifierTaskTest extends TestCase {
 		$directive = array_shift($result);
 		$this->assertSame('\Authentication\AuthenticationService::loadIdentifier(0)', $directive->toArray()['method']);
 
-		// dd($directive->toArray());
 		$map = $directive->toArray()['map'];
 
 		$map = array_map(function ($className) {
