@@ -9,6 +9,21 @@ and Fontawesome v4 or v5:
 - FormatIconFontAwesome4Task
 - FormatIconFontAwesome5Task
 
+Pick one depending on the FA version you are using.
+
+#### Authentication plugin AuthenticationService::loadIdentifier()
+
+- AuthServiceLoadIdentifierTask
+
+To enable, add it to the task stack:
+```php
+// config/app_local.php 
+'IdeHelper' => [
+    'generatorTasks' => [
+        AuthServiceLoadIdentifierTask::class => AuthServiceLoadIdentifierTask::class,
+    ],
+],
+```
 
 ### Add your own task
 
