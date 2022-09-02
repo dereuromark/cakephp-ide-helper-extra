@@ -11,7 +11,7 @@ and Fontawesome v4 or v5:
 
 Pick one depending on the FA version you are using.
 
-#### Authentication plugin AuthenticationService::loadIdentifier()
+#### Authentication.AuthenticationService::loadIdentifier()
 
 - AuthServiceLoadIdentifierTask
 
