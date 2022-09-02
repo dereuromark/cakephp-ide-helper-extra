@@ -19,7 +19,7 @@ Supports IDE autocomplete/typehinting of (magic)strings as well as return types/
 - [Tools](https://github.com/dereuromark/cakephp-tools) plugin
     * FormatHelper::icon() and FontAwesome v4 or v5 icons
 - [Authentication](https://github.com/cakephp/authentication) plugin
-    * Adds typehinting for AuthenticationService::loadIdentifier() method
+    * AuthenticationService::loadIdentifier()
 - ... and more (using PHPStorm meta file)
 
 See [IdeHelper Wiki](https://github.com/dereuromark/cakephp-ide-helper-extra/wiki) for details and tips/settings.
