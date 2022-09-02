@@ -18,6 +18,8 @@ This branch is for use with **CakePHP 4.2+**. For details see [version map](http
 Supports IDE autocomplete/typehinting of (magic)strings as well as return types/values for:
 - [Tools](https://github.com/dereuromark/cakephp-tools) plugin
     * FormatHelper::icon() and FontAwesome v4 or v5 icons
+- [Authentication](https://github.com/cakephp/authentication) plugin
+    * Adds typehinting for AuthenticationService::loadIdentifier() method
 - ... and more (using PHPStorm meta file)
 
 See [IdeHelper Wiki](https://github.com/dereuromark/cakephp-ide-helper-extra/wiki) for details and tips/settings.
