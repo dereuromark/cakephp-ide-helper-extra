@@ -9,38 +9,21 @@ and Fontawesome v4 or v5:
 - FormatIconFontAwesome4Task
 - FormatIconFontAwesome5Task
 
-#### Authentication Plugin
-Usage:
+Pick one depending on the FA version you are using.
 
-```
-composer require --dev dereuromark/cakephp-ide-helper-extra
-```
+#### Authentication plugin AuthenticationService::loadIdentifier()
 
-```
-# src/Application.php bootstrapCli()
+- AuthServiceLoadIdentifierTask
 
-// Load more plugins here
-try {
-    $this->addPlugin('IdeHelper');
-    $this->addPlugin('IdeHelperExtra');
-} catch (\Throwable $e) {
-     # code...
-}
-```
-
-```
-# config/app_local.php 
- 'IdeHelper' => [
+To enable, add it to the task stack:
+```php
+// config/app_local.php 
+'IdeHelper' => [
     'generatorTasks' => [
-        "AuthServiceLoadIdentifierTask" => AuthServiceLoadIdentifierTask::class
-    ]
+        AuthServiceLoadIdentifierTask::class => AuthServiceLoadIdentifierTask::class,
+    ],
 ],
 ```
-
-```
-bin/cake phpstorm generate
-```
-
 
 ### Add your own task
 
