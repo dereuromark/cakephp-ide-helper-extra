@@ -1,9 +1,13 @@
 ## CakePHP IdeHelper Extras
 
+IDE auto-complete for your custom code elements.
+
 ### Existing tasks
 Follow the main documentation on how to add them.
 
 #### Tools.FormatHelper::icons()
+
+![icon() Example](icon_example.png)
 
 Fontawesome v4/v5/v6:
 - FormatIconFontAwesome4Task
