@@ -6,10 +6,10 @@ use Cake\TestSuite\TestCase;
 use Cake\View\View;
 use IdeHelper\Generator\Directive\ExpectedArguments;
 use IdeHelper\Generator\Directive\RegisterArgumentsSet;
-use IdeHelperExtra\Tools\Generator\Task\FormatIconFontAwesome5Task;
+use IdeHelperExtra\Tools\Generator\Task\FormatIconFontAwesome6Task;
 use Tools\View\Helper\FormatHelper;
 
-class FormatIconFontAwesome5TaskTest extends TestCase {
+class FormatIconFontAwesome6TaskTest extends TestCase {
 
 	/**
 	 * @var \Tools\View\Helper\FormatHelper
@@ -42,8 +42,8 @@ class FormatIconFontAwesome5TaskTest extends TestCase {
 	 * @return void
 	 */
 	public function testCollect(): void {
-		$path = TEST_FILES . 'Tools' . DS . 'fa5' . DS . 'icons.json';
-		$task = new FormatIconFontAwesome5Task($path);
+		$path = TEST_FILES . 'Tools' . DS . 'fa6' . DS . 'icons.json';
+		$task = new FormatIconFontAwesome6Task($path);
 
 		$result = $task->collect();
 

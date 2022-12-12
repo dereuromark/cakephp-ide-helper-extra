@@ -8,6 +8,7 @@ use Cake\View\View;
 use IdeHelper\Generator\Directive\ExpectedArguments;
 use IdeHelper\Generator\Directive\RegisterArgumentsSet;
 use IdeHelper\Generator\Task\TaskInterface;
+use IdeHelperExtra\Tools\Generator\Task\Icon\BootstrapIconCollector;
 use RuntimeException;
 use Tools\View\Helper\FormatHelper;
 
@@ -78,23 +79,7 @@ class FormatIconBootstrapTask implements TaskInterface {
 		/** @var array<string> $configured */
 		$configured = array_keys($configured);
 
-		$fontFile = $this->fontPath;
-		$icons = [];
-		if (!file_exists($fontFile)) {
-			throw new RuntimeException('File not found: ' . $fontFile);
-		}
-
-		$content = file_get_contents($fontFile);
-		if ($content === false) {
-			throw new RuntimeException('Cannot read file: ' . $fontFile);
-		}
-		$array = json_decode($content, true);
-		if (!$array) {
-			throw new RuntimeException('Cannot parse JSON: ' . $fontFile);
-		}
-
-		/** @var array<string> $icons */
-		$icons = array_keys($array);
+		$icons = BootstrapIconCollector::collect($this->fontPath);
 
 		$icons = array_merge($configured, $icons);
 		sort($icons);

@@ -8,14 +8,11 @@ use Cake\View\View;
 use IdeHelper\Generator\Directive\ExpectedArguments;
 use IdeHelper\Generator\Directive\RegisterArgumentsSet;
 use IdeHelper\Generator\Task\TaskInterface;
-use IdeHelperExtra\Tools\Generator\Task\Icon\FontAwesome4IconCollector;
+use IdeHelperExtra\Tools\Generator\Task\Icon\FontAwesome6IconCollector;
 use RuntimeException;
 use Tools\View\Helper\FormatHelper;
 
-/**
- * Autocomplete for FormatHelper::icon() with Font Awesome v4 icons.
- */
-class FormatIconFontAwesome4Task implements TaskInterface {
+class FormatIconFontAwesome6Task implements TaskInterface {
 
 	public const CLASS_FORMAT_HELPER = FormatHelper::class;
 
@@ -68,10 +65,11 @@ class FormatIconFontAwesome4Task implements TaskInterface {
 	}
 
 	/**
-	 * Fontawesome v4 using variables.scss or variables.less file.
+	 * Fontawesome v5 using sprites .svg files.
 	 *
 	 * Set your custom file path in your app.php:
-	 *     'fontPath' => ROOT . '/node_modules/.../scss/variables.scss'
+	 * 'Format' => [
+	 *     'fontPath' => ROOT . '/webroot/css/fontawesome-free/metadata/icons.json',
 	 *
 	 * @return array<string>
 	 */
@@ -81,7 +79,7 @@ class FormatIconFontAwesome4Task implements TaskInterface {
 		/** @var array<string> $configured */
 		$configured = array_keys($configured);
 
-		$icons = FontAwesome4IconCollector::collect($this->fontPath);
+		$icons = FontAwesome6IconCollector::collect($this->fontPath);
 
 		$icons = array_merge($configured, $icons);
 		sort($icons);

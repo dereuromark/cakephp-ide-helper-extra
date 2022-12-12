@@ -8,6 +8,7 @@ use Cake\View\View;
 use IdeHelper\Generator\Directive\ExpectedArguments;
 use IdeHelper\Generator\Directive\RegisterArgumentsSet;
 use IdeHelper\Generator\Task\TaskInterface;
+use IdeHelperExtra\Tools\Generator\Task\Icon\FontAwesome5IconCollector;
 use RuntimeException;
 use Tools\View\Helper\FormatHelper;
 
@@ -68,27 +69,17 @@ class FormatIconFontAwesome5Task implements TaskInterface {
 	 *
 	 * Set your custom file path in your app.php:
 	 * 'Format' => [
-	 *     'fontPath' => ROOT . '/webroot/css/fontawesome-free/sprites/solid.svg',
+	 *     'fontPath' => ROOT . '/webroot/css/font-awesome-v5-icons/data/icons.json',
 	 *
 	 * @return array<string>
 	 */
 	protected function collectIcons(): array {
 		$helper = new FormatHelper(new View());
 		$configured = $helper->getConfig('fontIcons');
+		/** @var array<string> $configured */
 		$configured = array_keys($configured);
 
-		$fontFile = $this->fontPath;
-		$icons = [];
-		if (!file_exists($fontFile)) {
-			throw new RuntimeException('File not found: ' . $fontFile);
-		}
-
-		$content = file_get_contents($fontFile);
-		if ($content === false) {
-			throw new RuntimeException('Cannot read file: ' . $fontFile);
-		}
-		preg_match_all('/symbol id="([a-z][^"]+)"/', $content, $matches);
-		$icons = $matches[1];
+		$icons = FontAwesome5IconCollector::collect($this->fontPath);
 
 		$icons = array_merge($configured, $icons);
 		sort($icons);
