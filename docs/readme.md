@@ -5,18 +5,23 @@ Follow the main documentation on how to add them.
 
 #### Tools.FormatHelper::icons()
 
-and Fontawesome v4 or v5:
+Fontawesome v4/v5/v6:
 - FormatIconFontAwesome4Task
 - FormatIconFontAwesome5Task
+- FormatIconFontAwesome6Task
 
 Pick one depending on the FA version you are using.
+
+For bootstrap icons:
+- FormatIconBootstrapTask
+
 
 #### Authentication.AuthenticationService::loadIdentifier()
 
 - AuthServiceLoadIdentifierTask
 
 To enable, add it to the task stack in your app config:
-```php 
+```php
 use IdeHelperExtra\Authentication\Generator\Task\AuthServiceLoadIdentifierTask;
 
 ...
