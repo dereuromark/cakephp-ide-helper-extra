@@ -84,7 +84,9 @@ class IconRenderTask implements TaskInterface {
 		}
 
 		// Also add primary set without prefix
-		$setList = array_shift($names) ?: [];
+		$set = $helper->getConfig('sets');
+		$defaultSet = array_key_first($set);
+		$setList = $names[$defaultSet];
 		foreach ($setList as $icon) {
 			$icons[] = $icon;
 		}
