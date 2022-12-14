@@ -60,11 +60,7 @@ class IconRenderTask implements TaskInterface {
 	}
 
 	/**
-	 * Feather Icons using .json file.
-	 *
-	 * Set your custom file path in your app.php:
-	 * 'Format' => [
-	 *     'fontPath' => ROOT . '/webroot/css/feather-icons/dist/icons.json',
+	 * Collects all icons.
 	 *
 	 * @return array<string>
 	 */
