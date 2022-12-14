@@ -8,9 +8,9 @@ use Cake\View\View;
 use IdeHelper\Generator\Directive\ExpectedArguments;
 use IdeHelper\Generator\Directive\RegisterArgumentsSet;
 use IdeHelper\Generator\Task\TaskInterface;
-use IdeHelperExtra\Tools\Generator\Task\Icon\FontAwesome5IconCollector;
 use RuntimeException;
 use Tools\View\Helper\FormatHelper;
+use Tools\View\Icon\Collector\FontAwesome5IconCollector;
 
 class FormatIconFontAwesome5Task implements TaskInterface {
 

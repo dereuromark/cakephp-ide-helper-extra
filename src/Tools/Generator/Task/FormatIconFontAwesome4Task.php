@@ -8,9 +8,9 @@ use Cake\View\View;
 use IdeHelper\Generator\Directive\ExpectedArguments;
 use IdeHelper\Generator\Directive\RegisterArgumentsSet;
 use IdeHelper\Generator\Task\TaskInterface;
-use IdeHelperExtra\Tools\Generator\Task\Icon\FontAwesome4IconCollector;
 use RuntimeException;
 use Tools\View\Helper\FormatHelper;
+use Tools\View\Icon\Collector\FontAwesome4IconCollector;
 
 /**
  * Autocomplete for FormatHelper::icon() with Font Awesome v4 icons.
