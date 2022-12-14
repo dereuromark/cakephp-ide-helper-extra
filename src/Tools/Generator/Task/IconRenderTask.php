@@ -86,11 +86,13 @@ class IconRenderTask implements TaskInterface {
 		}
 
 		// Also add primary set without prefix
-		$set = $helper->getConfig('sets');
-		$defaultSet = array_key_first($set);
-		$setList = $names[$defaultSet];
-		foreach ($setList as $icon) {
-			$icons[] = $icon;
+		if ($helper->getConfig('autoPrefix')) {
+			$set = $helper->getConfig('sets');
+			$defaultSet = array_key_first($set);
+			$setList = $names[$defaultSet];
+			foreach ($setList as $icon) {
+				$icons[] = $icon;
+			}
 		}
 
 		$icons = array_merge($configured, $icons);
