@@ -8,36 +8,31 @@ use Cake\View\View;
 use IdeHelper\Generator\Directive\ExpectedArguments;
 use IdeHelper\Generator\Directive\RegisterArgumentsSet;
 use IdeHelper\Generator\Task\TaskInterface;
-use RuntimeException;
-use Tools\View\Helper\FormatHelper;
-use Tools\View\Icon\Collector\BootstrapIconCollector;
+use Tools\View\Helper\IconHelper;
 
-class FormatIconBootstrapTask implements TaskInterface {
+class IconRenderTask implements TaskInterface {
 
-	public const CLASS_FORMAT_HELPER = FormatHelper::class;
+	public const CLASS_ICON_HELPER = IconHelper::class;
 
 	/**
 	 * @var string
 	 */
-	public const SET_ICONS_BOOTSTRAP = 'bootstrapIcons';
+	public const SET_ICONS = 'icons';
 
 	/**
-	 * @var string
+	 * @var array<string, mixed>
 	 */
-	protected $fontPath;
+	protected $config;
 
 	/**
-	 * @param string|null $fontPath
+	 * @param array|null $config
 	 */
-	public function __construct(?string $fontPath = null) {
-		if ($fontPath === null) {
-			$fontPath = (string)Configure::readOrFail('Format.fontPath');
-		}
-		if ($fontPath && !file_exists($fontPath)) {
-			throw new RuntimeException('File not found: ' . $fontPath);
+	public function __construct(?array $config = null) {
+		if ($config === null) {
+			$config = Configure::read('Icon') ?: [];
 		}
 
-		$this->fontPath = $fontPath;
+		$this->config = $config;
 	}
 
 	/**
@@ -54,10 +49,10 @@ class FormatIconBootstrapTask implements TaskInterface {
 
 		ksort($list);
 
-		$registerArgumentsSet = new RegisterArgumentsSet(static::SET_ICONS_BOOTSTRAP, $list);
+		$registerArgumentsSet = new RegisterArgumentsSet(static::SET_ICONS, $list);
 		$result[$registerArgumentsSet->key()] = $registerArgumentsSet;
 
-		$method = '\\' . static::CLASS_FORMAT_HELPER . '::icon()';
+		$method = '\\' . static::CLASS_ICON_HELPER . '::render()';
 		$directive = new ExpectedArguments($method, 0, [(string)$registerArgumentsSet]);
 		$result[$directive->key()] = $directive;
 
@@ -65,21 +60,34 @@ class FormatIconBootstrapTask implements TaskInterface {
 	}
 
 	/**
-	 * Bootstrap Icons using .json file.
+	 * Feather Icons using .json file.
 	 *
 	 * Set your custom file path in your app.php:
 	 * 'Format' => [
-	 *     'fontPath' => ROOT . '/webroot/css/bootstrap-icons/font/bootstrap-icons.json',
+	 *     'fontPath' => ROOT . '/webroot/css/feather-icons/dist/icons.json',
 	 *
 	 * @return array<string>
 	 */
 	protected function collectIcons(): array {
-		$helper = new FormatHelper(new View());
-		$configured = $helper->getConfig('fontIcons');
+		$helper = new IconHelper(new View(), $this->config);
+		$configured = $helper->getConfig('map') ?: [];
 		/** @var array<string> $configured */
 		$configured = array_keys($configured);
 
-		$icons = BootstrapIconCollector::collect($this->fontPath);
+		$icons = [];
+
+		$names = $helper->names();
+		foreach ($names as $setName => $setList) {
+			foreach ($setList as $icon) {
+				$icons[] = $setName . ':' . $icon;
+			}
+		}
+
+		// Also add primary set without prefix
+		$setList = array_shift($names) ?: [];
+		foreach ($setList as $icon) {
+			$icons[] = $icon;
+		}
 
 		$icons = array_merge($configured, $icons);
 		sort($icons);

@@ -5,7 +5,7 @@ IDE auto-complete for your custom code elements.
 ### Existing tasks
 Follow the main documentation on how to add them.
 
-#### Tools.FormatHelper::icons()
+#### Tools.FormatHelper::icon()
 
 ![icon() Example](icon_example.png)
 
@@ -19,6 +19,10 @@ Pick one depending on the FA version you are using.
 For bootstrap icons:
 - FormatIconBootstrapTask
 
+#### Tools.IconHelper::render()
+
+Uses the configured task sets:
+- IconRenderTask
 
 #### Authentication.AuthenticationService::loadIdentifier()
 
