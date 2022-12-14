@@ -77,9 +77,11 @@ class IconRenderTask implements TaskInterface {
 		$icons = [];
 
 		$names = $helper->names();
+
+		$separator = $helper->getConfig('separator');
 		foreach ($names as $setName => $setList) {
 			foreach ($setList as $icon) {
-				$icons[] = $setName . ':' . $icon;
+				$icons[] = $setName . $separator . $icon;
 			}
 		}
 
