@@ -24,16 +24,14 @@ class IconRenderTaskTest extends TestCase {
 
 		$config = [
 			'sets' => [
-				'bs' => BootstrapIcon::class,
-			],
-			'config' => [
 				'bs' => [
+					'class' => BootstrapIcon::class,
 					'path' => TEST_FILES . 'Tools/bootstrap/bootstrap-icons.json',
 				],
 			],
 		];
 
-		if (!file_exists($config['config']['bs']['path'])) {
+		if (!file_exists($config['sets']['bs']['path'])) {
 			exec('cd test_files && php update-test-files.php');
 		}
 
