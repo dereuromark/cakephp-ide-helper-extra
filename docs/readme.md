@@ -7,7 +7,7 @@ Follow the main documentation on how to add them.
 
 #### Tools.FormatHelper::icon()
 
-![icon() Example](icon_example.png)
+![icon() Example](format-icon.png)
 
 Fontawesome v4/v5/v6:
 - FormatIconFontAwesome4Task
@@ -20,6 +20,8 @@ For bootstrap icons:
 - FormatIconBootstrapTask
 
 #### Tools.IconHelper::render()
+
+![render() Example](icon-render.png)
 
 Uses the configured task sets:
 - IconRenderTask
