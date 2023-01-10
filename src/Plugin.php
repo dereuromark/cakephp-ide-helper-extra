@@ -7,11 +7,6 @@ use Cake\Core\BasePlugin;
 class Plugin extends BasePlugin {
 
 	/**
-  * Plugin name.
-  */
-	protected ?string $name = 'IdeHelperExtra';
-
-	/**
 	 * @var bool
 	 */
 	protected bool $middlewareEnabled = false;

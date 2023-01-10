@@ -3,7 +3,6 @@
 namespace IdeHelperExtra\Test\TestCase\Generator\Task;
 
 use Cake\TestSuite\TestCase;
-use IdeHelper\Generator\Task\ElementTask;
 use IdeHelperExtra\Authentication\Generator\Task\AuthServiceLoadIdentifierTask;
 use Shim\TestSuite\TestTrait;
 
@@ -11,7 +10,7 @@ class AuthServiceLoadIdentifierTaskTest extends TestCase {
 
 	use TestTrait;
 
-	protected ElementTask $task;
+	protected AuthServiceLoadIdentifierTask $task;
 
 	/**
 	 * @return void
