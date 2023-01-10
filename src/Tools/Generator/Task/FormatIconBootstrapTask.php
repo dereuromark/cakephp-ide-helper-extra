@@ -21,10 +21,7 @@ class FormatIconBootstrapTask implements TaskInterface {
 	 */
 	public const SET_ICONS_BOOTSTRAP = 'bootstrapIcons';
 
-	/**
-	 * @var string
-	 */
-	protected $fontPath;
+	protected string $fontPath;
 
 	/**
 	 * @param string|null $fontPath

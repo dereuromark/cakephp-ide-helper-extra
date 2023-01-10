@@ -11,10 +11,7 @@ use Tools\View\Helper\FormatHelper;
 
 class FormatIconFontAwesome4TaskTest extends TestCase {
 
-	/**
-	 * @var \Tools\View\Helper\FormatHelper
-	 */
-	protected $helper;
+	protected FormatHelper $helper;
 
 	/**
 	 * @return void

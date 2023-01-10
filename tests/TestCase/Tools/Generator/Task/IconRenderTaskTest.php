@@ -11,10 +11,7 @@ use Tools\View\Icon\BootstrapIcon;
 
 class IconRenderTaskTest extends TestCase {
 
-	/**
-	 * @var \Tools\View\Helper\IconHelper
-	 */
-	protected $helper;
+	protected IconHelper $helper;
 
 	/**
 	 * @return void

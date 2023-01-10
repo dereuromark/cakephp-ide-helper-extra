@@ -7,30 +7,28 @@ use Cake\Core\BasePlugin;
 class Plugin extends BasePlugin {
 
 	/**
-	 * Plugin name.
-	 *
-	 * @var string
-	 */
-	protected $name = 'IdeHelperExtra';
+  * Plugin name.
+  */
+	protected ?string $name = 'IdeHelperExtra';
 
 	/**
 	 * @var bool
 	 */
-	protected $middlewareEnabled = false;
+	protected bool $middlewareEnabled = false;
 
 	/**
 	 * @var bool
 	 */
-	protected $bootstrapEnabled = false;
+	protected bool $bootstrapEnabled = false;
 
 	/**
 	 * @var bool
 	 */
-	protected $routesEnabled = false;
+	protected bool $routesEnabled = false;
 
 	/**
 	 * @var bool
 	 */
-	protected $consoleEnabled = false;
+	protected bool $consoleEnabled = false;
 
 }

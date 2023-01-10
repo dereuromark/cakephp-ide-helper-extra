@@ -10,10 +10,7 @@ use Tools\View\Helper\FormatHelper;
 
 class FormatIconBootstrapTaskTest extends TestCase {
 
-	/**
-	 * @var \Tools\View\Helper\FormatHelper
-	 */
-	protected $helper;
+	protected FormatHelper $helper;
 
 	/**
 	 * @return void

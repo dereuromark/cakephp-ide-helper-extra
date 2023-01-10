@@ -21,10 +21,7 @@ class FormatIconFontAwesome6Task implements TaskInterface {
 	 */
 	public const SET_ICONS_FONTAWESOME = 'fontawesomeIcons';
 
-	/**
-	 * @var string
-	 */
-	protected $fontPath;
+	protected string $fontPath;
 
 	/**
 	 * @param string|null $fontPath
