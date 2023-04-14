@@ -3,7 +3,7 @@
 [![CI](https://github.com/dereuromark/cakephp-ide-helper-extra/workflows/CI/badge.svg?branch=master)](https://github.com/dereuromark/cakephp-ide-helper-extra/actions?query=workflow%3ACI+branch%3Amaster)
 [![Coverage Status](https://img.shields.io/codecov/c/github/dereuromark/cakephp-ide-helper-extra/master.svg)](https://codecov.io/github/dereuromark/cakephp-ide-helper-extra/branch/master)
 [![Latest Stable Version](https://poser.pugx.org/dereuromark/cakephp-ide-helper-extra/v/stable.svg)](https://packagist.org/packages/dereuromark/cakephp-ide-helper-extra)
-[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.3-8892BF.svg)](https://php.net/)
+[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.4-8892BF.svg)](https://php.net/)
 [![License](https://poser.pugx.org/dereuromark/cakephp-ide-helper-extra/license.png)](https://packagist.org/packages/dereuromark/cakephp-ide-helper-extra)
 [![Total Downloads](https://poser.pugx.org/dereuromark/cakephp-ide-helper-extra/d/total.svg)](https://packagist.org/packages/dereuromark/cakephp-ide-helper-extra)
 
