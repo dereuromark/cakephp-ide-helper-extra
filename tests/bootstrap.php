@@ -3,6 +3,8 @@
 use Cake\Cache\Cache;
 use Cake\Core\Configure;
 use Cake\Core\Plugin;
+use Cake\Datasource\ConnectionManager;
+use IdeHelperExtra\Plugin as IdeHelperExtraPlugin;
 
 if (!defined('DS')) {
 	define('DS', DIRECTORY_SEPARATOR);
@@ -61,10 +63,10 @@ $cache = [
 
 Cache::setConfig($cache);
 
-Plugin::getCollection()->add(new IdeHelperExtra\Plugin());
+Plugin::getCollection()->add(new IdeHelperExtraPlugin());
 
 if (getenv('db_dsn')) {
-	Cake\Datasource\ConnectionManager::setConfig('test', [
+	ConnectionManager::setConfig('test', [
 		'className' => 'Cake\Database\Connection',
 		'url' => getenv('db_dsn'),
 		'timezone' => 'UTC',
@@ -82,7 +84,7 @@ if (!getenv('db_dsn')) {
 	//putenv('db_dsn=postgres://postgres@127.0.0.1/test');
 }
 
-Cake\Datasource\ConnectionManager::setConfig('test', [
+ConnectionManager::setConfig('test', [
 	'url' => getenv('db_dsn'),
 	'driver' => getenv('db_class'),
 	'database' => getenv('db_database'),
