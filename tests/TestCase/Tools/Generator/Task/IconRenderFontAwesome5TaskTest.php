@@ -6,12 +6,13 @@ use Cake\TestSuite\TestCase;
 use Cake\View\View;
 use IdeHelper\Generator\Directive\ExpectedArguments;
 use IdeHelper\Generator\Directive\RegisterArgumentsSet;
-use IdeHelperExtra\Tools\Generator\Task\FormatIconFontAwesome5Task;
-use Tools\View\Helper\FormatHelper;
+use IdeHelperExtra\Tools\Generator\Task\IconRenderTask;
+use Tools\View\Helper\IconHelper;
+use Tools\View\Icon\FontAwesome5Icon;
 
-class FormatIconFontAwesome5TaskTest extends TestCase {
+class IconRenderFontAwesome5TaskTest extends TestCase {
 
-	protected FormatHelper $helper;
+	protected IconHelper $helper;
 
 	/**
 	 * @return void
@@ -19,28 +20,29 @@ class FormatIconFontAwesome5TaskTest extends TestCase {
 	public function setUp(): void {
 		parent::setUp();
 
-		$this->helper = new FormatHelper(new View(), [
-			'iconNamespace' => 'fas',
-			'autoPrefix' => 'fa',
-		]);
-	}
+		$config = [
+			'sets' => [
+				'fa5' => [
+					'class' => FontAwesome5Icon::class,
+					'path' => TEST_FILES . 'Tools/fa5/icons.json',
+				],
+			],
+		];
 
-	/**
-	 * Show that we are still API compatible/valid.
-	 *
-	 * @return void
-	 */
-	public function testIcon(): void {
-		$result = $this->helper->icon('foo-bar');
-		$this->assertTextContains('fas fa-foo-bar', $result);
+		if (!file_exists($config['sets']['fa5']['path'])) {
+			exec('cd test_files && php update-test-files.php');
+		}
+
+		$this->helper = new IconHelper(new View(), $config);
 	}
 
 	/**
 	 * @return void
 	 */
 	public function testCollect(): void {
-		$path = TEST_FILES . 'Tools' . DS . 'fa5' . DS . 'icons.json';
-		$task = new FormatIconFontAwesome5Task($path);
+		$config = $this->helper->getConfig();
+
+		$task = new IconRenderTask($config);
 
 		$result = $task->collect();
 

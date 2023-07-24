@@ -6,12 +6,13 @@ use Cake\TestSuite\TestCase;
 use Cake\View\View;
 use IdeHelper\Generator\Directive\ExpectedArguments;
 use IdeHelper\Generator\Directive\RegisterArgumentsSet;
-use IdeHelperExtra\Tools\Generator\Task\FormatIconFontAwesome4Task;
-use Tools\View\Helper\FormatHelper;
+use IdeHelperExtra\Tools\Generator\Task\IconRenderTask;
+use Tools\View\Helper\IconHelper;
+use Tools\View\Icon\FontAwesome4Icon;
 
-class FormatIconFontAwesome4TaskTest extends TestCase {
+class IconRenderFontAwesome4TaskTest extends TestCase {
 
-	protected FormatHelper $helper;
+	protected IconHelper $helper;
 
 	/**
 	 * @return void
@@ -19,17 +20,20 @@ class FormatIconFontAwesome4TaskTest extends TestCase {
 	public function setUp(): void {
 		parent::setUp();
 
-		$this->helper = new FormatHelper(new View());
-	}
+		$config = [
+			'sets' => [
+				'fa4' => [
+					'class' => FontAwesome4Icon::class,
+					'path' => TEST_FILES . 'Tools/fa4/variables.less',
+				],
+			],
+		];
 
-	/**
-	 * Show that we are still API compatible/valid.
-	 *
-	 * @return void
-	 */
-	public function testIcon(): void {
-		$result = $this->helper->icon('foo-bar');
-		$this->assertTextContains('fa fa-foo-bar', $result);
+		if (!file_exists($config['sets']['fa4']['path'])) {
+			exec('cd test_files && php update-test-files.php');
+		}
+
+		$this->helper = new IconHelper(new View(), $config);
 	}
 
 	/**
@@ -40,8 +44,8 @@ class FormatIconFontAwesome4TaskTest extends TestCase {
 	 * @return void
 	 */
 	public function testCollect(string $extension): void {
-		$path = TEST_FILES . 'Tools' . DS . 'fa4' . DS . 'variables.' . $extension;
-		$task = new FormatIconFontAwesome4Task($path);
+		$config = $this->helper->getConfig();
+		$task = new IconRenderTask($config);
 
 		$result = $task->collect();
 
@@ -68,7 +72,7 @@ class FormatIconFontAwesome4TaskTest extends TestCase {
 	/**
 	 * @return array
 	 */
-	public function extensions(): array {
+	public static function extensions(): array {
 		return [
 			'scss' => ['scss'],
 			'less' => ['less'],

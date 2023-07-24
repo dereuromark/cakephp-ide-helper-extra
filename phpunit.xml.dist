@@ -15,11 +15,15 @@
         </testsuite>
     </testsuites>
 
+	<extensions>
+		<bootstrap class="\Cake\TestSuite\Fixture\Extension\PHPUnitExtension"/>
+	</extensions>
+
     <!-- Prevent coverage reports from looking in tests and vendors -->
-    <coverage>
+    <source>
         <include>
             <directory suffix=".php">src/</directory>
         </include>
-    </coverage>
+    </source>
 
 </phpunit>

@@ -5,13 +5,13 @@ namespace IdeHelperExtra\Test\TestCase\Tools\Generator\Task;
 use Cake\TestSuite\TestCase;
 use Cake\View\View;
 use IdeHelper\Generator\Directive\ExpectedArguments;
-use IdeHelper\Generator\Directive\RegisterArgumentsSet;
-use IdeHelperExtra\Tools\Generator\Task\FormatIconFontAwesome6Task;
-use Tools\View\Helper\FormatHelper;
+use IdeHelperExtra\Tools\Generator\Task\IconRenderTask;
+use Tools\View\Helper\IconHelper;
+use Tools\View\Icon\BootstrapIcon;
 
-class FormatIconFontAwesome6TaskTest extends TestCase {
+class IconRenderBootstrapTaskTest extends TestCase {
 
-	protected FormatHelper $helper;
+	protected IconHelper $helper;
 
 	/**
 	 * @return void
@@ -19,10 +19,20 @@ class FormatIconFontAwesome6TaskTest extends TestCase {
 	public function setUp(): void {
 		parent::setUp();
 
-		$this->helper = new FormatHelper(new View(), [
-			'iconNamespace' => 'fas',
-			'autoPrefix' => 'fa',
-		]);
+		$config = [
+			'sets' => [
+				'bs' => [
+					'class' => BootstrapIcon::class,
+					'path' => TEST_FILES . 'Tools/bootstrap/bootstrap-icons.json',
+				],
+			],
+		];
+
+		if (!file_exists($config['sets']['bs']['path'])) {
+			exec('cd test_files && php update-test-files.php');
+		}
+
+		$this->helper = new IconHelper(new View(), $config);
 	}
 
 	/**
@@ -31,16 +41,16 @@ class FormatIconFontAwesome6TaskTest extends TestCase {
 	 * @return void
 	 */
 	public function testIcon(): void {
-		$result = $this->helper->icon('foo-bar');
-		$this->assertTextContains('fas fa-foo-bar', $result);
+		$result = $this->helper->render('foo-bar');
+		$this->assertTextContains('bi bi-foo-bar', $result);
 	}
 
 	/**
 	 * @return void
 	 */
 	public function testCollect(): void {
-		$path = TEST_FILES . 'Tools' . DS . 'fa6' . DS . 'icons.json';
-		$task = new FormatIconFontAwesome6Task($path);
+		$config = $this->helper->getConfig();
+		$task = new IconRenderTask($config);
 
 		$result = $task->collect();
 
@@ -49,18 +59,17 @@ class FormatIconFontAwesome6TaskTest extends TestCase {
 		/** @var \IdeHelper\Generator\Directive\RegisterArgumentsSet $directive */
 		$directive = array_shift($result);
 
-		$this->assertInstanceOf(RegisterArgumentsSet::class, $directive);
-
 		$list = $directive->toArray()['list'];
 		$list = array_map(function ($className) {
 			return (string)$className;
 		}, $list);
 
-		$this->assertTrue(count($list) > 900);
-		$this->assertSame('\'smile\'', $list['smile']);
+		$this->assertTrue(count($list) > 299, 'count of ' . count($list));
+		$this->assertSame('\'zoom-in\'', $list['zoom-in']);
 
 		/** @var \IdeHelper\Generator\Directive\ExpectedArguments $directive */
 		$directive = array_shift($result);
+
 		$this->assertInstanceOf(ExpectedArguments::class, $directive);
 	}
 

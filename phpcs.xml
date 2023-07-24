@@ -7,5 +7,7 @@
     <file>tests/</file>
     <exclude-pattern>/tests/test_files/</exclude-pattern>
     <exclude-pattern>/tests/test_app/</exclude-pattern>
-    <rule ref="PSR2R"/>
+
+	<rule ref="PSR2R"/>
+
 </ruleset>
