@@ -1,6 +1,6 @@
 <?php
 
-namespace IdeHelperExtra\Test\TestCase\Generator\Task;
+namespace IdeHelperExtra\Test\TestCase\Authentication\Generator\Task;
 
 use Cake\TestSuite\TestCase;
 use IdeHelperExtra\Authentication\Generator\Task\AuthServiceLoadIdentifierTask;
