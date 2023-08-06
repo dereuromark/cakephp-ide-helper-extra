@@ -4,7 +4,7 @@ use Cake\Cache\Cache;
 use Cake\Core\Configure;
 use Cake\Core\Plugin;
 use Cake\Datasource\ConnectionManager;
-use IdeHelperExtra\Plugin as IdeHelperExtraPlugin;
+use IdeHelperExtra\IdeHelperExtraPlugin;
 
 if (!defined('DS')) {
 	define('DS', DIRECTORY_SEPARATOR);

@@ -4,7 +4,7 @@ namespace IdeHelperExtra;
 
 use Cake\Core\BasePlugin;
 
-class Plugin extends BasePlugin {
+class IdeHelperExtraPlugin extends BasePlugin {
 
 	/**
 	 * @var bool
