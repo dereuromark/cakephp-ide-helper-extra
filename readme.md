@@ -29,5 +29,9 @@ You can submit your own tasks either inside your plugin or here as extra.
 ### Plugins with already included tasks and more
 See https://github.com/dereuromark/cakephp-ide-helper/#plugins-with-meta-file-generator-tasks
 
+### When to put addons in this plugin
+The addons in this plugin aim to decouple the IdeHelper and other plugins. The dependency even as require-dev can sometimes not be desired.
+So whenever you want to have the dependency not part of it, you can ask to put things here or make your own addon plugin of sorts.
+
 ### Install, Setup, Usage, Contribution
 See the **[Docs](https://github.com/dereuromark/cakephp-ide-helper-extra/tree/master/docs)** for details.
