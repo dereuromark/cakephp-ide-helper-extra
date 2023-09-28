@@ -32,7 +32,7 @@
 	"require": {
 		"php": ">=8.1",
 		"cakephp/cakephp": "^5.0.0",
-		"dereuromark/cakephp-ide-helper": "dev-cake5"
+		"dereuromark/cakephp-ide-helper": "^2.0.0"
 	},
 	"require-dev": {
 		"dereuromark/cakephp-tools": "dev-cake5",
