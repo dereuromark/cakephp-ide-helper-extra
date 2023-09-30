@@ -17,7 +17,7 @@ This branch is for use with **CakePHP 5.0+**. For details see [version map](http
 
 Supports IDE autocomplete/typehinting of (magic)strings as well as return types/values for:
 - [Tools](https://github.com/dereuromark/cakephp-tools) plugin
-    * FormatHelper::icon() and FontAwesome v4/v5/v6 or Bootstrap icons
+    * IconHelper::render() and FontAwesome v4/v5/v6 or Bootstrap icons
 - [Authentication](https://github.com/cakephp/authentication) plugin
     * AuthenticationService::loadIdentifier()
 - ... and more (using PHPStorm meta file)
