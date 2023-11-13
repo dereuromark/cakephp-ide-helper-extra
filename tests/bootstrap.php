@@ -66,31 +66,13 @@ Cache::setConfig($cache);
 
 Plugin::getCollection()->add(new IdeHelperExtraPlugin());
 
-if (getenv('db_dsn')) {
-	ConnectionManager::setConfig('test', [
-		'className' => 'Cake\Database\Connection',
-		'url' => getenv('db_dsn'),
-		'timezone' => 'UTC',
-		'quoteIdentifiers' => true,
-		'cacheMetadata' => true,
-	]);
-
-	return;
-}
-
 // Ensure default test connection is defined
-if (!getenv('db_dsn')) {
-	putenv('db_dsn=sqlite:///:memory:');
-
-	//putenv('db_dsn=postgres://postgres@127.0.0.1/test');
+if (!getenv('DB_URL')) {
+	putenv('DB_URL=sqlite:///:memory:');
 }
 
 ConnectionManager::setConfig('test', [
-	'url' => getenv('db_dsn'),
-	'driver' => getenv('db_class'),
-	'database' => getenv('db_database'),
-	'username' => getenv('db_username'),
-	'password' => getenv('db_password'),
+	'url' => getenv('DB_URL'),
 	'timezone' => 'UTC',
 	'quoteIdentifiers' => true,
 	'cacheMetadata' => true,
