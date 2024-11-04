@@ -10,6 +10,9 @@ use IdeHelper\Generator\Directive\RegisterArgumentsSet;
 use IdeHelper\Generator\Task\TaskInterface;
 use Tools\View\Helper\IconHelper;
 
+/**
+ * @deprecated Use https://github.com/dereuromark/cakephp-templating instead.
+ */
 class IconRenderTask implements TaskInterface {
 
 	public const CLASS_ICON_HELPER = IconHelper::class;
