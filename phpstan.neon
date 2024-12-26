@@ -4,5 +4,5 @@ parameters:
 		- src/
 	bootstrapFiles:
 		- tests/bootstrap.php
-	checkMissingIterableValueType: false
 	ignoreErrors:
+		- identifier: missingType.iterableValue
