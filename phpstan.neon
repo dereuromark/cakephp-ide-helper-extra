@@ -1,9 +1,3 @@
-services:
-	-
-		class: IdeHelper\PHPStan\AssociationTableMixinClassReflectionExtension
-		tags:
-			- phpstan.broker.methodsClassReflectionExtension
-			- phpstan.broker.propertiesClassReflectionExtension
 parameters:
 	level: 8
 	paths:
