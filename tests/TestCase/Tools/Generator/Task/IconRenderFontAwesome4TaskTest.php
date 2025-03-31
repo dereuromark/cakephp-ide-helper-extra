@@ -37,13 +37,9 @@ class IconRenderFontAwesome4TaskTest extends TestCase {
 	}
 
 	/**
-	 * @dataProvider extensions
-	 *
-	 * @param string $extension
-	 *
 	 * @return void
 	 */
-	public function testCollect(string $extension): void {
+	public function testCollect(): void {
 		$config = $this->helper->getConfig();
 		$task = new IconRenderTask($config);
 
@@ -67,16 +63,6 @@ class IconRenderFontAwesome4TaskTest extends TestCase {
 		/** @var \IdeHelper\Generator\Directive\ExpectedArguments $directive */
 		$directive = array_shift($result);
 		$this->assertInstanceOf(ExpectedArguments::class, $directive);
-	}
-
-	/**
-	 * @return array
-	 */
-	public static function extensions(): array {
-		return [
-			'scss' => ['scss'],
-			'less' => ['less'],
-		];
 	}
 
 }
