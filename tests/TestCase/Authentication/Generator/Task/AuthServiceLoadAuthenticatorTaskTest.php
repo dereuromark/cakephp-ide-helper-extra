@@ -3,14 +3,14 @@
 namespace IdeHelperExtra\Test\TestCase\Authentication\Generator\Task;
 
 use Cake\TestSuite\TestCase;
-use IdeHelperExtra\Authentication\Generator\Task\AuthServiceLoadIdentifierTask;
+use IdeHelperExtra\Authentication\Generator\Task\AuthServiceLoadAuthenticatorTask;
 use Shim\TestSuite\TestTrait;
 
-class AuthServiceLoadIdentifierTaskTest extends TestCase {
+class AuthServiceLoadAuthenticatorTaskTest extends TestCase {
 
 	use TestTrait;
 
-	protected AuthServiceLoadIdentifierTask $task;
+	protected AuthServiceLoadAuthenticatorTask $task;
 
 	/**
 	 * @return void
@@ -18,7 +18,7 @@ class AuthServiceLoadIdentifierTaskTest extends TestCase {
 	protected function setUp(): void {
 		parent::setUp();
 
-		$this->task = new AuthServiceLoadIdentifierTask();
+		$this->task = new AuthServiceLoadAuthenticatorTask();
 	}
 
 	/**
@@ -31,7 +31,7 @@ class AuthServiceLoadIdentifierTaskTest extends TestCase {
 
 		/** @var \IdeHelper\Generator\Directive\Override $directive */
 		$directive = array_shift($result);
-		$this->assertSame('\Authentication\Identifier\IdentifierCollection::load(0)', $directive->toArray()['method']);
+		$this->assertSame('\Authentication\AuthenticationService::loadAuthenticator(0)', $directive->toArray()['method']);
 
 		$map = $directive->toArray()['map'];
 
@@ -40,7 +40,7 @@ class AuthServiceLoadIdentifierTaskTest extends TestCase {
 		}, $map);
 
 		$expectedMap = [
-			'Custom' => '\TestApp\Identifier\CustomIdentifier::class',
+			'FooBar' => '\TestApp\Authenticator\FooBarAuthenticator::class',
 		];
 		$this->assertSame($expectedMap, $map);
 	}

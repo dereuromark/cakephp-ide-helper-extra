@@ -19,7 +19,8 @@ Supports IDE autocomplete/typehinting of (magic)strings as well as return types/
 - [Tools](https://github.com/dereuromark/cakephp-tools) plugin
     * IconHelper::render() and FontAwesome v4/v5/v6 or Bootstrap icons [DEPRECATED] Now directly part of [Templating](https://github.com/dereuromark/cakephp-templating) plugin
 - [Authentication](https://github.com/cakephp/authentication) plugin
-    * AuthenticationService::loadIdentifier()
+    * AuthenticationService::loadAuthenticator()
+    * IdentifierCollection::load()
 - ... and more (using PHPStorm meta file)
 
 See [IdeHelper Wiki](https://github.com/dereuromark/cakephp-ide-helper-extra/wiki) for details and tips/settings.

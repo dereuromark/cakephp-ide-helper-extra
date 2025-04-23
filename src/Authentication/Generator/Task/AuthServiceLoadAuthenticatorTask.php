@@ -12,18 +12,17 @@ use IdeHelper\Utility\AppPath;
 use IdeHelper\Utility\Plugin;
 use IdeHelper\ValueObject\ClassName;
 
-class AuthServiceLoadIdentifierTask implements TaskInterface {
+class AuthServiceLoadAuthenticatorTask implements TaskInterface {
 
 	/**
 	 * @return array<\IdeHelper\Generator\Directive\BaseDirective>
 	 */
 	public function collect(): array {
-		$method = '\Authentication\Identifier\IdentifierCollection::load(0)';
+		$method = '\Authentication\AuthenticationService::loadAuthenticator(0)';
 
 		$map = [];
-
-		$identifiers = $this->collectIdentifiers();
-		foreach ($identifiers as $name => $className) {
+		$authenticators = $this->collectAuthenticators();
+		foreach ($authenticators as $name => $className) {
 			$map[$name] = ClassName::create($className);
 		}
 
@@ -41,37 +40,36 @@ class AuthServiceLoadIdentifierTask implements TaskInterface {
 	/**
 	 * @return array<string, string>
 	 */
-	protected function collectIdentifiers(): array {
-		$identifiers = [];
+	protected function collectAuthenticators(): array {
+		$authenticators = [];
 
-		$folders = AppPath::get('Identifier');
+		$folders = AppPath::get('Authenticator');
 		foreach ($folders as $folder) {
-			$identifiers = $this->addIdentifiers($identifiers, $folder);
+			$authenticators = $this->addAuthenticators($authenticators, $folder);
 		}
 
 		$plugins = Plugin::all();
 		foreach ($plugins as $plugin) {
-			$folders = AppPath::get('Identifier', $plugin);
+			$folders = AppPath::get('Authenticator', $plugin);
 			foreach ($folders as $folder) {
-				$identifiers = $this->addIdentifiers($identifiers, $folder, $plugin);
+				$authenticators = $this->addAuthenticators($authenticators, $folder, $plugin);
 			}
 		}
 
-		return $identifiers;
+		return $authenticators;
 	}
 
 	/**
-	 * @param array<string> $components
+	 * @param array<string, string> $authenticators
 	 * @param string $folder
 	 * @param string|null $plugin
-	 *
-	 * @return array<string>
+	 * @return array<string, string>
 	 */
-	protected function addIdentifiers(array $components, $folder, $plugin = null) {
+	protected function addAuthenticators(array $authenticators, string $folder, $plugin = null): array {
 		$folderContent = (new Folder($folder))->read(Folder::SORT_NAME, true);
 
 		foreach ($folderContent[1] as $file) {
-			preg_match('/^(.+)Identifier\.php$/', $file, $matches);
+			preg_match('/^(.+)Authenticator\.php$/', $file, $matches);
 			if (!$matches) {
 				continue;
 			}
@@ -80,15 +78,15 @@ class AuthServiceLoadIdentifierTask implements TaskInterface {
 				$name = $plugin . '.' . $name;
 			}
 
-			$className = App::className($name, 'Identifier', 'Identifier');
+			$className = App::className($name, 'Authenticator', 'Authenticator');
 			if (!$className) {
 				continue;
 			}
 
-			$components[$name] = $className;
+			$authenticators[$name] = $className;
 		}
 
-		return $components;
+		return $authenticators;
 	}
 
 }

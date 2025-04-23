@@ -15,7 +15,23 @@ Uses the configured task sets:
 Fontawesome v4/v5/v6m, Bootstrap or other icon types are all possible.
 It will use the configured `Icon.map` config depending on the FA version you are using.
 
-#### Authentication.AuthenticationService::loadIdentifier()
+#### Authentication.AuthenticationService::loadAuthenticator()
+
+- AuthServiceLoadAuthenticatorTask
+
+```php
+use IdeHelperExtra\Authentication\Generator\Task\AuthServiceLoadAuthenticatorTask;
+
+...
+
+'IdeHelper' => [
+    'generatorTasks' => [
+        AuthServiceLoadAuthenticatorTask::class => AuthServiceLoadAuthenticatorTask::class,
+    ],
+],
+```
+
+#### Authentication.IdentifierCollection::load()
 
 - AuthServiceLoadIdentifierTask
 
@@ -41,7 +57,7 @@ The downside of adding it here is a missing constraint towards your plugin versi
 to accidental BC breaks.
 
 #### Contributing guidelines
-If you want to add your Task here for example:
+If you want to add your Task here, for example:
 - src/[PluginName]/[Type]/Task/[ClassNameDetails]Task.php
 - test case along with it
 - test should also have smoke test of the functionality if possible (to be alerted about BC breaks)
