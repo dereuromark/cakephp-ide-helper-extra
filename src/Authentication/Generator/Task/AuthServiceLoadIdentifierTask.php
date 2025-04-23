@@ -76,6 +76,10 @@ class AuthServiceLoadIdentifierTask implements TaskInterface {
 				continue;
 			}
 			$name = $matches[1];
+			if ($name === 'Abstract') {
+				continue;
+			}
+
 			if ($plugin) {
 				$name = $plugin . '.' . $name;
 			}
