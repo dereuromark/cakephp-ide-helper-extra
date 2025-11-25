@@ -48,6 +48,37 @@ use IdeHelperExtra\Authentication\Generator\Task\AuthServiceLoadIdentifierTask;
 ],
 ```
 
+#### Search.Manager::add()
+
+- SearchManagerAddFilterTask
+
+Provides autocomplete for filter types when using the [FriendsOfCake/search](https://github.com/FriendsOfCake/search) plugin.
+
+```php
+use IdeHelperExtra\Search\Generator\Task\SearchManagerAddFilterTask;
+
+...
+
+'IdeHelper' => [
+    'generatorTasks' => [
+        SearchManagerAddFilterTask::class => SearchManagerAddFilterTask::class,
+    ],
+],
+```
+
+Supports built-in filters (`Search.Value`, `Search.Like`, `Search.Boolean`, `Search.Callback`, `Search.Compare`, `Search.Exists`, `Search.Finder`) and discovers custom filters from `App\Model\Filter\` and plugins.
+
+To exclude built-in filters (since they have fluent method equivalents like `->callback()`):
+```php
+'IdeHelper' => [
+    'generatorTasks' => [
+        SearchManagerAddFilterTask::class => [
+            'includeDefaultFilters' => false,
+        ],
+    ],
+],
+```
+
 ### Add your own task
 
 The idea of this repository is to provide a way to collect useful tasks and addons where adding them into the main
