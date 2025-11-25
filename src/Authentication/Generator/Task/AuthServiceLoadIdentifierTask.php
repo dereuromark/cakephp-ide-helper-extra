@@ -12,6 +12,9 @@ use IdeHelper\Utility\AppPath;
 use IdeHelper\Utility\Plugin;
 use IdeHelper\ValueObject\ClassName;
 
+/**
+ * @deprecated The loadIdentifier() method will go away in favor of directly passing them to authenticators.
+ */
 class AuthServiceLoadIdentifierTask implements TaskInterface {
 
 	/**
