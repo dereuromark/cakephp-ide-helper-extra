@@ -10,3 +10,4 @@
 /.idea/
 /tests/test_files/node_modules/
 /tests/test_files/package-lock.json
+.phpcs.cache
