@@ -42,7 +42,7 @@ class IconRenderFontAwesome6TaskTest extends TestCase {
 	public function testCollect(): void {
 		$config = $this->helper->getConfig();
 
-		$task = new IconRenderTask($config);
+		$task = @new IconRenderTask($config);
 
 		$result = $task->collect();
 

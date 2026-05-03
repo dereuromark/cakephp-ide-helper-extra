@@ -17,6 +17,15 @@ use IdeHelper\ValueObject\ClassName;
  */
 class AuthServiceLoadIdentifierTask implements TaskInterface {
 
+	public function __construct() {
+		trigger_error(
+			'IdeHelperExtra AuthServiceLoadIdentifierTask is deprecated and will be removed in 3.0.'
+			. ' The Authentication plugin\'s loadIdentifier() flow is going away in favor of'
+			. ' passing identifiers directly to authenticators.',
+			E_USER_DEPRECATED,
+		);
+	}
+
 	/**
 	 * @return array<\IdeHelper\Generator\Directive\BaseDirective>
 	 */

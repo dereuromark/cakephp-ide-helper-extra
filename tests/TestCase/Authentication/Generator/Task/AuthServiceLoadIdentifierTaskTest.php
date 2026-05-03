@@ -18,7 +18,7 @@ class AuthServiceLoadIdentifierTaskTest extends TestCase {
 	protected function setUp(): void {
 		parent::setUp();
 
-		$this->task = new AuthServiceLoadIdentifierTask();
+		$this->task = @new AuthServiceLoadIdentifierTask();
 	}
 
 	/**

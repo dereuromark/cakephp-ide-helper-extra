@@ -31,6 +31,12 @@ class IconRenderTask implements TaskInterface {
 	 * @param array|null $config
 	 */
 	public function __construct(?array $config = null) {
+		trigger_error(
+			'IdeHelperExtra IconRenderTask is deprecated and will be removed in 3.0.'
+			. ' Use the IconRenderTask shipped with dereuromark/cakephp-templating instead.',
+			E_USER_DEPRECATED,
+		);
+
 		if ($config === null) {
 			$config = Configure::read('Icon') ?: [];
 		}

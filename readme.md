@@ -22,8 +22,10 @@ Supports IDE autocomplete/typehinting of (magic)strings as well as return types/
     * IconHelper::render() and FontAwesome v4/v5/v6 or Bootstrap icons [DEPRECATED] Now directly part of [Templating](https://github.com/dereuromark/cakephp-templating) plugin
 - [Authentication](https://github.com/cakephp/authentication) plugin
     * AuthenticationService::loadAuthenticator()
-    * IdentifierCollection::load()
+    * IdentifierCollection::load() [DEPRECATED] The upstream loadIdentifier() flow is going away in favor of passing identifiers directly to authenticators
 - ... and more (using PHPStorm meta file)
+
+The tasks marked as [DEPRECATED] still ship and emit an `E_USER_DEPRECATED` notice on construction. They will be removed in the next major release (3.0). Migrate now.
 
 See [IdeHelper Wiki](https://github.com/dereuromark/cakephp-ide-helper-extra/wiki) for details and tips/settings.
 
