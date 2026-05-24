@@ -74,7 +74,7 @@ class AuthServiceLoadIdentifierTask implements TaskInterface {
 		$folderContent = (new Folder($folder))->read(Folder::SORT_NAME, true);
 
 		foreach ($folderContent[1] as $file) {
-			preg_match('/^(.+)Identifier\.php$/', (string) $file, $matches);
+			preg_match('/^(.+)Identifier\.php$/', (string)$file, $matches);
 			if (!$matches) {
 				continue;
 			}
