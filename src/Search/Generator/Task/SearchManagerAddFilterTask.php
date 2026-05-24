@@ -97,7 +97,7 @@ class SearchManagerAddFilterTask implements TaskInterface {
 		$folderContent = (new Folder($folder))->read(Folder::SORT_NAME, true);
 
 		foreach ($folderContent[1] as $file) {
-			preg_match('/^(.+)\.php$/', $file, $matches);
+			preg_match('/^(.+)\.php$/', (string)$file, $matches);
 			if (!$matches) {
 				continue;
 			}
