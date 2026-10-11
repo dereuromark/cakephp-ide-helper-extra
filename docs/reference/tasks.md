@@ -52,7 +52,7 @@ The task provides name completion for `Search\Manager::add()`, not return-type o
 
 `AuthServiceLoadIdentifierTask` generates return-type overrides for `Authentication\Identifier\IdentifierFactory::create(0)` by scanning `Identifier` directories. Its class name is retained, but the generated target follows Authentication 5.
 
-The factory accepts a string alias, configuration array or existing identifier. These overrides apply to string aliases. See the [Authentication 5 documentation](https://book.cakephp.org/authentication/5/en/) for configuring identifiers on authenticators.
+The factory accepts a string alias, configuration array or existing identifier. These overrides apply to string aliases. See the [Authentication 5 documentation](https://book.cakephp.org/authentication/5/) for configuring identifiers on authenticators.
 
 ```php
 use IdeHelperExtra\Authentication\Generator\Task\AuthServiceLoadIdentifierTask;
