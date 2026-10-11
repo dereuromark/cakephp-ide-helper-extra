@@ -2,6 +2,10 @@
 
 Complete [Installation](./installation). This example adds PhpStorm metadata for an existing CakePHP Authentication integration. It does not change authentication behavior.
 
+## Check your Authentication setup
+
+Authentication must be installed and loaded in the CLI application for plugin aliases such as `Authentication.Form` to appear. Keep your existing `$this->addPlugin('Authentication')` registration available when running commands, or list `Authentication` in the parent plugin’s `IdeHelper.plugins` configuration. Application authenticator classes can be scanned without plugin aliases.
+
 ## Register one task
 
 In `config/app_local.php`, add this entry to the configuration array returned by the file. Put the `use` declaration above the return statement:

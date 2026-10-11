@@ -34,17 +34,19 @@ use IdeHelperExtra\Search\Generator\Task\SearchManagerAddFilterTask;
 return [
     'IdeHelper' => [
         'generatorTasks' => [
-            SearchManagerAddFilterTask::class => new SearchManagerAddFilterTask(
-                includeDefaultFilters: false,
-            ),
+            SearchManagerAddFilterTask::class => class_exists(SearchManagerAddFilterTask::class)
+                ? new SearchManagerAddFilterTask(includeDefaultFilters: false)
+                : false,
         ],
     ],
 ];
 ```
 
-The default is `true`, which includes `Search.Boolean`, `Search.Callback`, `Search.Compare`, `Search.Exists`, `Search.Finder`, `Search.Like` and `Search.Value`. Setting it to `false` excludes those predefined names even when the scanner finds them in the Search plugin; other discovered filters remain available.
+The `class_exists()` guard keeps this configuration safe when production installs omit development packages.
 
-The task provides name completion, not return-type overrides or filter validation.
+The default is `true`, which includes `Search.Boolean`, `Search.Callback`, `Search.Compare`, `Search.Exists`, `Search.Finder`, `Search.Like` and `Search.Value`. The scanner also includes other installed Search filters, such as `Search.Mapped`. Setting it to `false` skips all filters shipped in the Search plugin, including future additions; application filters and filters in other plugins remain available. An empty result produces no directive.
+
+The task provides name completion for `Search\Manager::add()`, not return-type overrides or filter validation. It does not add completion to `Search\Model\Filter\FilterCollection::add()`, even though that method accepts the same filter argument.
 
 ## Legacy identifiers
 
