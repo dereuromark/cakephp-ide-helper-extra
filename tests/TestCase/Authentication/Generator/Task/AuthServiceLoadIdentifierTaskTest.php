@@ -2,9 +2,11 @@
 
 namespace IdeHelperExtra\Test\TestCase\Authentication\Generator\Task;
 
+use Authentication\Identifier\IdentifierFactory;
 use Cake\TestSuite\TestCase;
 use IdeHelperExtra\Authentication\Generator\Task\AuthServiceLoadIdentifierTask;
 use Shim\TestSuite\TestTrait;
+use TestApp\Identifier\CustomIdentifier;
 
 class AuthServiceLoadIdentifierTaskTest extends TestCase {
 
@@ -31,7 +33,7 @@ class AuthServiceLoadIdentifierTaskTest extends TestCase {
 
 		/** @var \IdeHelper\Generator\Directive\Override $directive */
 		$directive = array_shift($result);
-		$this->assertSame('\Authentication\Identifier\IdentifierCollection::load(0)', $directive->toArray()['method']);
+		$this->assertSame('\Authentication\Identifier\IdentifierFactory::create(0)', $directive->toArray()['method']);
 
 		$map = $directive->toArray()['map'];
 
@@ -43,6 +45,8 @@ class AuthServiceLoadIdentifierTaskTest extends TestCase {
 			'Custom' => '\TestApp\Identifier\CustomIdentifier::class',
 		];
 		$this->assertSame($expectedMap, $map);
+		$identifier = IdentifierFactory::create('Custom');
+		$this->assertInstanceOf(CustomIdentifier::class, $identifier);
 	}
 
 }

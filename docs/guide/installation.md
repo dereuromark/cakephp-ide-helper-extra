@@ -1,6 +1,6 @@
 # Installation
 
-Install this development add-on in your application:
+Install this development add-on in a CakePHP 6 application whose root Composer manifest permits development dependencies (`"minimum-stability": "dev"` and `"prefer-stable": true`):
 
 ```sh
 composer require --dev dereuromark/cakephp-ide-helper-extra:dev-cake6

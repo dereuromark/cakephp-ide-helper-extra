@@ -48,11 +48,11 @@ The default is `true`, which includes `Search.Boolean`, `Search.Callback`, `Sear
 
 The task provides name completion for `Search\Manager::add()`, not return-type overrides or filter validation. It does not add completion to `Search\Model\Filter\FilterCollection::add()`, even though that method accepts the same filter argument.
 
-## Legacy identifiers
+## Identifier factory
 
-`AuthServiceLoadIdentifierTask` is deprecated. It generates return-type overrides for `Authentication\Identifier\IdentifierCollection::load(0)` by scanning `Identifier` directories.
+`AuthServiceLoadIdentifierTask` generates return-type overrides for `Authentication\Identifier\IdentifierFactory::create(0)` by scanning `Identifier` directories. Its class name is retained, but the generated target follows Authentication 5.
 
-Use it only for existing code that calls that legacy API. New Authentication integrations should follow the [current Authentication documentation](https://book.cakephp.org/authentication/3/en/) and configure identifiers directly on authenticators.
+The factory accepts a string alias, configuration array or existing identifier. These overrides apply to string aliases. See the [Authentication 5 documentation](https://book.cakephp.org/authentication/5/en/) for configuring identifiers on authenticators.
 
 ```php
 use IdeHelperExtra\Authentication\Generator\Task\AuthServiceLoadIdentifierTask;

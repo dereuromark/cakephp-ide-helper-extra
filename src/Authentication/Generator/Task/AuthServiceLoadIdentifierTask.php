@@ -13,7 +13,7 @@ use IdeHelper\Utility\Plugin;
 use IdeHelper\ValueObject\ClassName;
 
 /**
- * @deprecated The loadIdentifier() method will go away in favor of directly passing them to authenticators.
+ * Provides identifier factory return types for Authentication 5.
  */
 class AuthServiceLoadIdentifierTask implements TaskInterface {
 
@@ -21,7 +21,7 @@ class AuthServiceLoadIdentifierTask implements TaskInterface {
 	 * @return array<\IdeHelper\Generator\Directive\BaseDirective>
 	 */
 	public function collect(): array {
-		$method = '\Authentication\Identifier\IdentifierCollection::load(0)';
+		$method = '\Authentication\Identifier\IdentifierFactory::create(0)';
 
 		$map = [];
 

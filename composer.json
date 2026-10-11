@@ -39,7 +39,8 @@
 		"dereuromark/cakephp-tools": "dev-cake6",
 		"fig-r/psr2r-sniffer": "dev-master",
 		"phpunit/phpunit": "^13.0",
-		"friendsofcake/search": "dev-cake6"
+		"friendsofcake/search": "dev-cake6",
+		"cakephp/authentication": "^5.0@dev"
 	},
 	"minimum-stability": "dev",
 	"prefer-stable": true,
