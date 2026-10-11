@@ -55,10 +55,11 @@ class SearchManagerAddFilterTask implements TaskInterface {
 
 		$filters = $this->collectFilters();
 		foreach ($filters as $name) {
-			if (!$this->includeDefaultFilters && in_array($name, $this->defaultFilters, true)) {
-				continue;
-			}
 			$list[$name] = StringName::create($name);
+		}
+
+		if (!$list) {
+			return [];
 		}
 
 		ksort($list);
@@ -81,6 +82,9 @@ class SearchManagerAddFilterTask implements TaskInterface {
 
 		$plugins = PluginUtility::all();
 		foreach ($plugins as $plugin) {
+			if (!$this->includeDefaultFilters && $plugin === 'Search') {
+				continue;
+			}
 			$folders = AppPath::get('Model/Filter', $plugin);
 			foreach ($folders as $folder) {
 				$filters = $this->addFilters($filters, $folder, $plugin);

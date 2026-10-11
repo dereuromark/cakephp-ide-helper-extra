@@ -13,15 +13,14 @@ Composer installs the required [IdeHelper plugin](https://dereuromark.github.io/
 In `src/Application.php`, inside `bootstrap()` after `parent::bootstrap()`:
 
 ```php
-if (PHP_SAPI === 'cli' && class_exists(\IdeHelperExtra\IdeHelperExtraPlugin::class)) {
+if (PHP_SAPI === 'cli' && class_exists(\IdeHelper\IdeHelperPlugin::class)) {
     $this->addPlugin('IdeHelper');
-    $this->addPlugin('IdeHelperExtra');
 }
 ```
 
-Register each plugin once. If you already load IdeHelper, add only the Extra registration to that existing development block. The class check allows production installs made with `composer install --no-dev` to bootstrap without these packages.
+Register IdeHelper once. If you already load it, keep that existing development block. The class check allows production installs made with `composer install --no-dev` to bootstrap without these packages.
 
-Extra has no routes, middleware, bootstrap configuration or commands. Loading it makes its namespace available to the parent plugin’s task discovery; tasks still need explicit configuration.
+Extra has no routes, middleware, bootstrap configuration or commands. Composer autoloading and explicit task configuration are sufficient. Registering `IdeHelperExtra` as a CakePHP plugin is optional; it does not discover or enable tasks automatically.
 
 ## Choose an integration
 

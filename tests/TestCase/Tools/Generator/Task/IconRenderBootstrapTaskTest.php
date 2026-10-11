@@ -36,6 +36,21 @@ class IconRenderBootstrapTaskTest extends TestCase {
 	}
 
 	/**
+	 * @return void
+	 */
+	public function testConfiguredIconNamesProduceValidPhp(): void {
+		$config = $this->helper->getConfig();
+		$config['map']["custom'icon"] = 'bs:house';
+		$task = new IconRenderTask($config);
+		$directives = $task->collect();
+		$directive = array_shift($directives);
+
+		$this->assertArrayHasKey("custom'icon", $directive->toArray()['list']);
+		$tokens = token_get_all('<?php namespace PHPSTORM_META {' . $directive->build() . '}', TOKEN_PARSE);
+		$this->assertNotEmpty($tokens);
+	}
+
+	/**
 	 * Show that we are still API compatible/valid.
 	 *
 	 * @return void

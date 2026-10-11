@@ -93,6 +93,29 @@ class SearchManagerAddFilterTaskTest extends TestCase {
 		$this->assertArrayNotHasKey('Search.Like', $list);
 		$this->assertArrayNotHasKey('Search.Boolean', $list);
 		$this->assertArrayNotHasKey('Search.Callback', $list);
+		foreach (['Compare', 'Exists', 'Finder', 'Mapped'] as $name) {
+			$this->assertArrayNotHasKey('Search.' . $name, $list);
+		}
+		foreach (array_keys($list) as $name) {
+			$this->assertFalse(str_starts_with($name, 'Search.'));
+		}
+	}
+
+	/**
+	 * @return void
+	 */
+	public function testCollectWithoutApplicationOrDefaultFilters(): void {
+		$task = new class (includeDefaultFilters: false) extends SearchManagerAddFilterTask {
+			protected function addFilters(array $filters, string $folder, ?string $plugin = null): array {
+				if ($plugin === null) {
+					return $filters;
+				}
+
+				return parent::addFilters($filters, $folder, $plugin);
+			}
+		};
+
+		$this->assertSame([], $task->collect());
 	}
 
 	/**

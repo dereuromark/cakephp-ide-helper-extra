@@ -47,7 +47,7 @@ class IconRenderTask implements TaskInterface {
 		$icons = $this->collectIcons();
 		$list = [];
 		foreach ($icons as $icon) {
-			$list[$icon] = '\'' . $icon . '\'';
+			$list[$icon] = var_export($icon, true);
 		}
 
 		ksort($list);
