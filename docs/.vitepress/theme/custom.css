@@ -16,10 +16,10 @@
   --vp-c-brand-3: #8b5cf6;
 }
 
-.vp-doc table code,
 .vp-doc p code,
 .vp-doc li code {
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .vp-doc .custom-block.tip {

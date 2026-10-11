@@ -23,6 +23,8 @@ Merge this task into any existing `IdeHelper.generatorTasks` configuration. Othe
 
 ## Generate the metadata
 
+The parent’s default tasks also inspect database metadata. Use your application’s configured database connection, or disable its database tasks as described in the [parent docs](https://dereuromark.github.io/cakephp-ide-helper/generator/tasks).
+
 From the application root:
 
 ```sh
