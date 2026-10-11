@@ -13,28 +13,18 @@ IdeHelperExtra plugin for CakePHP applications.
 
 - Provides useful Tasks/Addons for [IdeHelper](https://github.com/dereuromark/cakephp-ide-helper)
 
-This branch is for use with **CakePHP 5.1+**. For details see [version map](https://github.com/dereuromark/cakephp-ide-helper-extra/wiki#cakephp-version-map).
+For older applications, see [version map](https://github.com/dereuromark/cakephp-ide-helper-extra/wiki#cakephp-version-map).
 
-## Features
+## Tasks
 
-Supports IDE autocomplete/typehinting of (magic)strings as well as return types/values for:
-- [Tools](https://github.com/dereuromark/cakephp-tools) plugin
-    * IconHelper::render() and FontAwesome v4/v5/v6 or Bootstrap icons [DEPRECATED] Now directly part of [Templating](https://github.com/dereuromark/cakephp-templating) plugin
-- [Authentication](https://github.com/cakephp/authentication) plugin
-    * AuthenticationService::loadAuthenticator()
-    * IdentifierCollection::load()
-- ... and more (using PHPStorm meta file)
+- Authentication authenticator names and return types.
+- Search filter names, including application and plugin filters.
+- Legacy identifier and Tools icon tasks for existing integrations. These tasks are deprecated; the docs explain current alternatives.
 
-See [IdeHelper Wiki](https://github.com/dereuromark/cakephp-ide-helper-extra/wiki) for details and tips/settings.
+Extra extends [CakePHP IdeHelper](https://dereuromark.github.io/cakephp-ide-helper/). It does not provide separate generator commands or annotation support.
 
-You can submit your own tasks either inside your plugin or here as extra.
+## Documentation
 
-### Plugins with already included tasks and more
-See https://github.com/dereuromark/cakephp-ide-helper/#plugins-with-meta-file-generator-tasks
+Read the [documentation website](https://dereuromark.github.io/cakephp-ide-helper-extra/), starting with [Installation](https://dereuromark.github.io/cakephp-ide-helper-extra/guide/installation) and [Getting started](https://dereuromark.github.io/cakephp-ide-helper-extra/guide/getting-started).
 
-### When to put addons in this plugin
-The addons in this plugin aim to decouple the IdeHelper and other plugins. The dependency even as require-dev can sometimes not be desired.
-So whenever you want to have the dependency not part of it, you can ask to put things here or make your own addon plugin of sorts.
-
-### Install, Setup, Usage, Contribution
-See the **[Docs](https://github.com/dereuromark/cakephp-ide-helper-extra/tree/master/docs)** for details.
+The [parent IdeHelper docs](https://dereuromark.github.io/cakephp-ide-helper/) cover generator commands and editor setup. Additional tasks belong here when their integration should stay outside the parent plugin’s dependency list.

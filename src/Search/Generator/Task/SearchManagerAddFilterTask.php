@@ -55,6 +55,9 @@ class SearchManagerAddFilterTask implements TaskInterface {
 
 		$filters = $this->collectFilters();
 		foreach ($filters as $name) {
+			if (!$this->includeDefaultFilters && in_array($name, $this->defaultFilters, true)) {
+				continue;
+			}
 			$list[$name] = StringName::create($name);
 		}
 
