@@ -6,12 +6,12 @@ namespace IdeHelperExtra\Test\TestClass;
 
 use IdeHelperExtra\Tools\Generator\Task\IconRenderTask;
 
-class ReleasedIconTask extends IconRenderTask {
+class TypedIconTask extends IconRenderTask {
 
 	/**
 	 * @var array<string, mixed>
 	 */
-	protected $config;
+	protected array $config;
 
 	public function configuration(): array {
 		return $this->config;
