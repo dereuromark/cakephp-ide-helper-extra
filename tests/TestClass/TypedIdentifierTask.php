@@ -6,7 +6,7 @@ namespace IdeHelperExtra\Test\TestClass;
 
 use IdeHelperExtra\Authentication\Generator\Task\AuthServiceLoadIdentifierTask;
 
-class ReleasedIdentifierTask extends AuthServiceLoadIdentifierTask {
+class TypedIdentifierTask extends AuthServiceLoadIdentifierTask {
 
 	/**
 	 * @param array<string, string> $components
@@ -14,7 +14,7 @@ class ReleasedIdentifierTask extends AuthServiceLoadIdentifierTask {
 	 * @param string|null $plugin
 	 * @return array<string, string>
 	 */
-	protected function addIdentifiers(array $components, $folder, $plugin = null) {
+	protected function addIdentifiers(array $components, string $folder, ?string $plugin = null): array {
 		return [];
 	}
 

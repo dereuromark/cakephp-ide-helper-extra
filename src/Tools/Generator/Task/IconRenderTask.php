@@ -25,7 +25,7 @@ class IconRenderTask implements TaskInterface {
 	/**
 	 * @var array<string, mixed>
 	 */
-	protected $config;
+	protected array $config;
 
 	/**
 	 * @param array|null $config
