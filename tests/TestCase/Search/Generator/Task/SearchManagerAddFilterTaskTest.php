@@ -7,6 +7,7 @@ namespace IdeHelperExtra\Test\TestCase\Search\Generator\Task;
 use Cake\Core\Plugin;
 use Cake\TestSuite\TestCase;
 use IdeHelperExtra\Search\Generator\Task\SearchManagerAddFilterTask;
+use Search\SearchPlugin;
 use Shim\TestSuite\TestTrait;
 
 class SearchManagerAddFilterTaskTest extends TestCase {
@@ -20,6 +21,10 @@ class SearchManagerAddFilterTaskTest extends TestCase {
 	 */
 	protected function setUp(): void {
 		parent::setUp();
+
+		if (!Plugin::isLoaded('Search')) {
+			Plugin::getCollection()->add(new SearchPlugin());
+		}
 
 		$this->task = new SearchManagerAddFilterTask();
 	}
@@ -94,9 +99,7 @@ class SearchManagerAddFilterTaskTest extends TestCase {
 	 * @return void
 	 */
 	public function testCollectWithoutPlugin(): void {
-		if (Plugin::isLoaded('Search')) {
-			$this->markTestSkipped('Cannot test without Search plugin when it is loaded');
-		}
+		Plugin::getCollection()->remove('Search');
 
 		$result = $this->task->collect();
 

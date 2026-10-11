@@ -64,13 +64,13 @@ class AuthServiceLoadIdentifierTask implements TaskInterface {
 	}
 
 	/**
-	 * @param array<string> $components
+	 * @param array<string, string> $components
 	 * @param string $folder
 	 * @param string|null $plugin
 	 *
-	 * @return array<string>
+	 * @return array<string, string>
 	 */
-	protected function addIdentifiers(array $components, $folder, $plugin = null) {
+	protected function addIdentifiers(array $components, string $folder, ?string $plugin = null): array {
 		$folderContent = (new Folder($folder))->read(Folder::SORT_NAME, true);
 
 		foreach ($folderContent[1] as $file) {
