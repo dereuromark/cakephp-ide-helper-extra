@@ -65,7 +65,7 @@ class AuthServiceLoadAuthenticatorTask implements TaskInterface {
 	 * @param string|null $plugin
 	 * @return array<string, string>
 	 */
-	protected function addAuthenticators(array $authenticators, string $folder, $plugin = null): array {
+	protected function addAuthenticators(array $authenticators, string $folder, ?string $plugin = null): array {
 		$folderContent = (new Folder($folder))->read(Folder::SORT_NAME, true);
 
 		foreach ($folderContent[1] as $file) {

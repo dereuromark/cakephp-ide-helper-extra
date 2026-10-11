@@ -19,7 +19,7 @@ For older applications, see [version map](https://github.com/dereuromark/cakephp
 
 The `cake6` branch prepares extension declarations for a future breaking release. It still requires CakePHP 5 and PHP 8.2 or later, and its tests run against CakePHP 5. CakePHP 6 compatibility is not established.
 
-Custom identifier tasks must declare `addIdentifiers(array $components, string $folder, ?string $plugin = null): array`. Subclasses that redeclare `IconRenderTask::$config` must use `protected array $config`. These declarations differ from the released contracts on `master`; existing applications should continue using a stable release.
+Custom identifier tasks that override `addIdentifiers()` must declare `addIdentifiers(array $components, string $folder, ?string $plugin = null): array`. Custom authenticator tasks that override `addAuthenticators()` must declare its plugin parameter as `?string $plugin = null`. Subclasses that redeclare `IconRenderTask::$config` must use `protected array $config`. These declarations differ from the released contracts on `master`; existing applications should continue using a stable release.
 
 ## Tasks
 
