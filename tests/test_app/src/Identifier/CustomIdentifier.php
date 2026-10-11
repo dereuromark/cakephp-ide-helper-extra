@@ -1,6 +1,13 @@
 <?php
 
 namespace TestApp\Identifier;
-class CustomIdentifier
-{
+
+use Authentication\Identifier\AbstractIdentifier;
+
+class CustomIdentifier extends AbstractIdentifier {
+
+	public function identify(array $credentials): ?array {
+		return null;
+	}
+
 }

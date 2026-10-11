@@ -1,12 +1,12 @@
 # Installation
 
-Install this development add-on in your application:
+Install this development add-on in a CakePHP 6 application whose root Composer manifest permits development dependencies (`"minimum-stability": "dev"` and `"prefer-stable": true`):
 
 ```sh
-composer require --dev dereuromark/cakephp-ide-helper-extra
+composer require --dev dereuromark/cakephp-ide-helper-extra:dev-cake6
 ```
 
-Composer installs the required [IdeHelper plugin](https://dereuromark.github.io/cakephp-ide-helper/) too. The [dependency manifest](https://github.com/dereuromark/cakephp-ide-helper-extra/blob/master/composer.json) defines supported PHP and CakePHP versions. For an older application, see the [version map](https://github.com/dereuromark/cakephp-ide-helper-extra/wiki#cakephp-version-map).
+Composer installs the required [IdeHelper plugin](https://dereuromark.github.io/cakephp-ide-helper/) too. The [dependency manifest](https://github.com/dereuromark/cakephp-ide-helper-extra/blob/cake6/composer.json) defines supported PHP and CakePHP versions. For an older application, see the [version map](https://github.com/dereuromark/cakephp-ide-helper-extra/wiki#cakephp-version-map).
 
 ## Load the development plugins
 

@@ -1,10 +1,10 @@
 #  CakePHP IdeHelperExtra Plugin
 
-[![CI](https://github.com/dereuromark/cakephp-ide-helper-extra/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/dereuromark/cakephp-ide-helper-extra/actions/workflows/ci.yml?query=branch%3Amaster)
-[![Coverage Status](https://img.shields.io/codecov/c/github/dereuromark/cakephp-ide-helper-extra/master.svg)](https://codecov.io/github/dereuromark/cakephp-ide-helper-extra/branch/master)
+[![CI](https://github.com/dereuromark/cakephp-ide-helper-extra/actions/workflows/ci.yml/badge.svg?branch=cake6)](https://github.com/dereuromark/cakephp-ide-helper-extra/actions/workflows/ci.yml?query=branch%3Acake6)
+[![Coverage Status](https://img.shields.io/codecov/c/github/dereuromark/cakephp-ide-helper-extra/cake6.svg)](https://codecov.io/github/dereuromark/cakephp-ide-helper-extra/branch/cake6)
 [![PHPStan](https://img.shields.io/badge/PHPStan-level%208-brightgreen.svg?style=flat)](https://phpstan.org/)
 [![Latest Stable Version](https://poser.pugx.org/dereuromark/cakephp-ide-helper-extra/v/stable.svg)](https://packagist.org/packages/dereuromark/cakephp-ide-helper-extra)
-[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%208.2-8892BF.svg)](https://php.net/)
+[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%208.5-8892BF.svg)](https://php.net/)
 [![License](https://poser.pugx.org/dereuromark/cakephp-ide-helper-extra/license.svg)](license)
 [![Total Downloads](https://poser.pugx.org/dereuromark/cakephp-ide-helper-extra/d/total.svg)](https://packagist.org/packages/dereuromark/cakephp-ide-helper-extra)
 [![Coding Standards](https://img.shields.io/badge/cs-PSR--2--R-purple.svg?style=flat-square)](https://github.com/php-fig-rectified/fig-rectified-standards)
@@ -15,9 +15,9 @@ IdeHelperExtra plugin for CakePHP applications.
 
 For older applications, see [version map](https://github.com/dereuromark/cakephp-ide-helper-extra/wiki#cakephp-version-map).
 
-## Future API preparation
+## CakePHP 6 development
 
-The `cake6` branch prepares extension declarations for a future breaking release. It still requires CakePHP 5 and PHP 8.2 or later, and its tests run against CakePHP 5. CakePHP 6 compatibility is not established.
+The `cake6` development branch targets CakePHP 6 and uses its matching IdeHelper branch. The `master` branch remains available for CakePHP 5.
 
 Custom identifier tasks that override `addIdentifiers()` must declare `addIdentifiers(array $components, string $folder, ?string $plugin = null): array`. Custom authenticator tasks that override `addAuthenticators()` must declare its plugin parameter as `?string $plugin = null`. Subclasses that redeclare `IconRenderTask::$config` must use `protected array $config`. These declarations differ from the released contracts on `master`; existing applications should continue using a stable release.
 

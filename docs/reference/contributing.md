@@ -9,7 +9,7 @@ composer stan-setup
 composer stan
 ```
 
-`stan-setup` installs PHPStan locally before analysis. CI checks PHP 8.2, PHP 8.5 and the lowest supported dependency versions.
+`stan-setup` installs PHPStan locally before analysis. CI checks PHP 8.5 and the lowest supported dependency versions.
 
 ## Add a task
 
